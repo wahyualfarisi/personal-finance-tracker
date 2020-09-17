@@ -1,0 +1,184 @@
+.CreditCard {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
+}
+
+.CreditCard_Icon_Sim {
+    width: 45px;
+    height: 30px;
+    margin: 20px 0;
+    border-radius: 8px;
+    background-color: #fdd76f;
+}
+
+.CreditCard_Number {
+   font-size: 1.5em;
+   font-family: ocr_a_std,sans-serif;
+   color: #fff;
+   text-shadow:-1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px rgba(0,0,0,0.8);
+   letter-spacing: 5px;
+   white-space: nowrap;
+   margin-bottom: 10px;
+}
+
+.CreditCard_Author {
+  font-size: 16px;
+  font-family: ocr_a_std,sans-serif;
+  color: #fff;
+  text-shadow:-1px -1px 0px rgba(255,255,255,0.3), 1px 1px 0px rgba(0,0,0,0.8);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+}
+
+.CreditCard_Logo div {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-color: #334397;
+    box-shadow:-2px 2px 0 rgba(255,255,255,.8);
+    border-radius: 30px 0 30px 30px;
+    transform: rotate(-65deg);
+}
+
+.CreditCard_Logo div > span {
+    color: #ccc;
+    display: block;
+    width: inherit;
+    font-size: 14px;
+    height: inherit;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: center;
+    transform: rotate(65deg);
+}
+
+.CreditCard_Logo div + span {
+    font-size: 10px;
+    
+    font-style: italic;
+    font-weight: bold;
+    margin-left: 15px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .8);
+}
+
+@media only screen and (min-width: 100px) {
+   
+    .CreditCard_Number {
+        font-size: .2rem;
+    }
+
+    .CreditCard_Author {
+        font-size: 8px;
+    }
+}
+
+@media only screen and (min-width: 350px) {
+   
+    .CreditCard_Number {
+        font-size: .9rem;
+    }
+
+    .CreditCard_Author {
+        font-size: 8px;
+    }
+}
+
+@media only screen and (min-width: 411px) {
+   
+    .CreditCard_Number {
+        font-size: 1.4rem;
+    }
+
+    .CreditCard_Author {
+        font-size: 8px;
+    }
+}
+
+@media(min-width: 500px){
+    .CreditCard {
+        width: 49%;
+    }
+
+    .CreditCard_Number {
+        font-size: .4rem;
+    }
+
+    .CreditCard_Author {
+        font-size: 10px;
+    }
+}
+
+@media(min-width: 638px){
+    .CreditCard {
+        width: 50%;
+        padding: 15px;
+        border-radius: 15px;
+    }
+    
+    .CreditCard_Icon_Sim {
+        width: 35px;
+        height: 20px;
+    }
+
+    .CreditCard_Number {
+        font-size: .9rem;
+    }
+
+
+    .CreditCard_Logo div {
+        width: 40px;
+        height: 40px;
+      
+    }
+
+    .CreditCard_Logo div > span {
+        font-size: 20px;
+    }
+
+    .CreditCard_Logo div + span {
+        font-size: 10px;
+    }
+}
+
+@media(min-width: 900px){
+    .CreditCard {
+        width: 32%;
+        padding: 25px;
+    }
+
+    .CreditCard_Icon_Sim {
+        width: 45px;
+        height: 30px;
+    }
+
+    .CreditCard_Number {
+        font-size: 1.2vw;
+    }
+
+    .CreditCard_Logo div {
+        width: 20px;
+        height: 20px;
+    }
+
+    .CreditCard_Logo div > span {
+        font-size: 10px;
+    }
+
+
+    .CreditCard_Logo div {
+        font-size: 25vw;
+    }
+
+    .CreditCard_Logo div + span {
+        font-size: 1.1vw;
+    }
+
+}
+

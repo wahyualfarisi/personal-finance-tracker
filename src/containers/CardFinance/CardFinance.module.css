@@ -1,0 +1,20 @@
+.CardFinance {
+    width: 80%;
+    margin: auto;
+}
+
+.CardFinance_heading {
+    display: flex;
+    justify-content: space-between;   
+}
+
+.CardFinance h5 {
+    
+}
+
+.CardFinance_Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+}

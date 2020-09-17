@@ -1,11 +1,12 @@
 import React from 'react';
 import Layout from './hoc/Layout/Layout';
+import CardFinance from './containers/CardFinance/CardFinance';
 
 function App() {
   return (
     <div>
         <Layout>
-          <h1>Main</h1>
+            <CardFinance />
         </Layout>
     </div>
   );
