@@ -15,6 +15,12 @@ const CardFinance = () => {
                 <CreditCard />
                 <CreditCard />
                 <CreditCard />
+                <CreditCard />
+                <CreditCard />
+                <CreditCard />
+                <CreditCard />
+                <CreditCard />
+                <CreditCard />
                 
             </div>
         </div>
