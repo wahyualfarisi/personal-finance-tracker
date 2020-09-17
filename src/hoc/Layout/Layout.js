@@ -1,39 +1,37 @@
-import React , {Component } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
-class Layout extends Component {
-    state = {
-        isShowSideDrawer: false
-    }
+const Layout = props => {
 
-    sideDrawerCloseHandler = () => {
-        this.setState({ isShowSideDrawer: false })
-    }
+    const [isShowSideDrawer , setisShowSideDrawer] = useState(false);
 
-    sideDrawerToggleHandler = () => {
-        this.setState(prevState => {
-            return {
-                isShowSideDrawer: !prevState.isShowSideDrawer
-            }
-        })
-    }
+    const prevShowSidebar = useRef();
 
-    render() {
-        return(
-            <React.Fragment>
-                <Toolbar 
-                    toggleHandler={this.sideDrawerToggleHandler} 
-                    isShowSideDrawer={this.state.isShowSideDrawer} />
-                <SideDrawer 
-                    open={this.state.isShowSideDrawer}
-                    closed={this.sideDrawerCloseHandler} />
-                <main>
-                    {this.props.children}
-                </main>
-            </React.Fragment>
-        )
-    }
-}
+    useEffect( () => {
+        prevShowSidebar.current = isShowSideDrawer;        
+    }, [isShowSideDrawer]);
+
+
+
+    const sideDrawerCloseHandler = () => setisShowSideDrawer(false);
+
+    const sideDrawerToggleHandler = () => setisShowSideDrawer(!prevShowSidebar.current);
+    
+
+    return(
+        <React.Fragment>
+            <Toolbar 
+                toggleHandler={sideDrawerToggleHandler} 
+                isShowSideDrawer={isShowSideDrawer} />
+            <SideDrawer 
+                open={isShowSideDrawer}
+                closed={sideDrawerCloseHandler} />
+            <main>
+                {props.children}
+            </main>
+        </React.Fragment>
+    )
+} 
 
 export default Layout;
