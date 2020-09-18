@@ -1,0 +1,29 @@
+.AddCard {
+    width: 90%;
+    margin: auto;
+}
+
+.AddCard_Container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.AddCard_Select_Color {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.AddCard_Form {
+    width: 100%;
+}
+
+@media(min-width: 500px){
+    .AddCard_Select_Color {
+        width: 29%;
+    }
+    .AddCard_Form{
+        width: 30%;
+    }
+}

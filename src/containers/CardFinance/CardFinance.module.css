@@ -1,7 +1,7 @@
 .CardFinance {
     width: 90%;
     margin: auto;
-    
+    height: 500px;
 }
 
 .CardFinance_heading {
@@ -15,7 +15,6 @@
 
 .CardFinance_Container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
-    
 }

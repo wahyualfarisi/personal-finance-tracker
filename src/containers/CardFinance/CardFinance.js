@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './CardFinance.module.css';
 import CreditCard from '../../components/UI/Cards/CreditCard/CreditCard';
+import { Link } from 'react-router-dom';
 
 const CardFinance = () => {
 
@@ -46,7 +47,8 @@ const CardFinance = () => {
             </div>
 
             <div className="mt-20 Text-center">
-                ADD YOUR CARD
+                
+                <Link to="/add"> ADD YOUR CARD </Link>
             </div>
             
         </div>
