@@ -12,13 +12,43 @@ const CardFinance = () => {
             </div>
 
             <div className={classes.CardFinance_Container}>
-                <CreditCard />
-                <CreditCard />
-                <CreditCard />
-                <CreditCard />
-                <CreditCard />
-                <CreditCard />
+                <CreditCard 
+                    bank_name="BANK NAME" 
+                    card_author="Wahyu Alfarisi"
+                    card_number="1233 9379 9373 0383"
+                    type="one" color="white" 
+                />
+                <CreditCard 
+                    bank_name="BANK NAME" 
+                    card_author="Wahyu Alfarisi"
+                    card_number="1233 9379 9373 0383"
+                    type="two" />
+                <CreditCard 
+                    bank_name="BANK NAME" 
+                    card_author="Wahyu Alfarisi"
+                    card_number="1233 9379 9373 0383"
+                    type="three" />
+                <CreditCard 
+                    bank_name="BANK NAME" 
+                    card_author="Wahyu Alfarisi"
+                    card_number="1233 9379 9373 0383"
+                    type="four" color="white" />
+                <CreditCard 
+                    bank_name="BANK NAME" 
+                    card_author="Wahyu Alfarisi"
+                    card_number="1233 9379 9373 0383"
+                    type="five" />
+                <CreditCard 
+                    bank_name="BANK NAME" 
+                    card_author="Wahyu Alfarisi"
+                    card_number="1233 9379 9373 0383"
+                    type="six" color="white" />
             </div>
+
+            <div className="mt-20 Text-center">
+                ADD YOUR CARD
+            </div>
+            
         </div>
     )
 };
