@@ -19,6 +19,38 @@
     width: 100%;
 }
 
+.AddCard_Button {
+    width: 100%;
+    outline: none;
+    padding: 15px;
+    color: white;
+    background: #0b0438;
+    border: none;
+    cursor: pointer;
+}
+
+.AddCard_Button:disabled {
+    color: #ccc;
+    background: #ddd;
+    cursor: not-allowed;
+}
+
+.AddCard_Button:not(:disabled) {
+    animation: enable 0.3s linear;
+}
+
+@keyframes enable {
+    0% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 @media(min-width: 500px){
     .AddCard_Select_Color {
         width: 29%;

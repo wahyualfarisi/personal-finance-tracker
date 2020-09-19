@@ -52,6 +52,12 @@ const CreditCard = props => {
         
     }
 
+    let transformCreditCardFormat = props.card_number.trim();
+    transformCreditCardFormat.split('-').join('');
+    if(transformCreditCardFormat.length > 0 ){
+        transformCreditCardFormat = transformCreditCardFormat.match(new RegExp('.{1,4}', 'g')).join(' ')
+    }
+
     return (
         <div className={[classes.CreditCard, type].join(' ')} >
             <header>
@@ -59,11 +65,11 @@ const CreditCard = props => {
                     <div>
                         <span>AL</span>
                     </div>
-                    <span>{props.bank_name} </span>
+                    <span className={color}>{props.bank_name} </span>
                 </div>
             </header>
             <div className={classes.CreditCard_Icon_Sim}></div>
-            <div className={[classes.CreditCard_Number, color].join(' ')}> {props.card_number} </div>
+            <div className={[classes.CreditCard_Number, color].join(' ')}> {transformCreditCardFormat} </div>
             <div className={[classes.CreditCard_Author, color].join(' ')}>{props.card_author} </div>
         </div>
     )

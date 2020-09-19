@@ -5,6 +5,10 @@ const Input = props => {
     let inputElement = null;
     const InputClasses = [classes.InputElement]
 
+    if(props.invalid && props.shouldValidate && props.touched) {
+        InputClasses.push(classes.Invalid)
+    }
+
     switch(props.elementType)
     {
         case ('input'):

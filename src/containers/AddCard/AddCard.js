@@ -3,6 +3,7 @@ import classes from './AddCard.module.css';
 import CreditCard from '../../components/UI/Cards/CreditCard/CreditCard';
 import BtnCircleColor from '../../components/UI/Buttons/BtnCircleColor/BtnCircleColor';
 import Input from '../../components/UI/Input/Input';
+import Btn from '../../components/UI/Buttons/Btn/Btn';
 
 class AddCard extends Component {
 
@@ -22,48 +23,91 @@ class AddCard extends Component {
                 valid: false,
                 touched: false
             },
-            your_name: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Enter Your Name'
-                },
-                value: '',
-                validation: {
-                    required: true
-                },
-                label: 'Enter Your Name',
-                valid: false,
-                touched: false
-            },
             number_card: {
                 elementType: 'input',
                 elementConfig: {
-                    type: 'text',
+                    type: 'number',
                     placeholder: 'Enter Card Number'
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: true,
+                    maxLength: 16,
+                    minLength: 16
+
                 },
                 label: 'Enter Card Number',
                 valid: false,
                 touched: false
             },
+            your_name: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Enter Your Name',
+                    maxLength: 15
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    maxLength: 15,
+                    minLength: 3
+                },
+                label: 'Enter Your Name',
+                valid: false,
+                touched: false
+            },
+           
 
         },
+        formIsValid: false,
         credit_card: {
-            bank_name: 'Bank Name',
-            card_author: 'Your Name',
-            card_number: '0000 0000 0000 0000',
             colorCard: 'one',
             colorText: 'white'
         },
         card_collections: ['one','two','three','four','five','six']
     }
 
-    onChangeHandler = (event, inputName) => {
+    onCheckValidity = (value, validation) => {
+        let isValid = true;
 
+        if( validation.required ){
+            isValid = value.trim() !== "" && isValid;
+        }
+
+        if( validation.minLength ){
+            isValid = value.length >= validation.minLength && isValid;
+        }
+
+        if( validation.maxLength ){
+            isValid = value.length <= validation.maxLength && isValid;
+        }
+
+        return isValid;
+
+    }
+
+    onChangeHandler = (event, inputName) => {
+        const updatedAddForm = { ...this.state.add_form };
+
+        const updatedInput = { ...updatedAddForm[inputName] }
+        updatedInput.value = event.target.value;
+        updatedInput.valid = this.onCheckValidity(event.target.value, updatedInput.validation)
+        updatedInput.touched = true;
+
+        updatedAddForm[inputName] = updatedInput;
+
+        let formIsValid = true;
+        for(let key in updatedAddForm) {
+            formIsValid = updatedAddForm[key].valid && formIsValid
+            
+        }
+        
+
+        this.setState({
+            add_form: updatedAddForm,
+            formIsValid: formIsValid
+        });
     }
 
     onColorHandler = (typeColor) => {
@@ -73,6 +117,22 @@ class AddCard extends Component {
                 colorCard: typeColor
             }
         })
+        console.log(this.state)
+    }
+
+    onTextColorHandler = color => {
+        this.setState({
+            credit_card: {
+                ...this.state.credit_card,
+                colorText: color
+            }
+        })
+    }
+
+    onSubmitHandler = (e) => {
+        e.preventDefault();
+
+        alert('ok')
     }
 
     render(){
@@ -91,9 +151,9 @@ class AddCard extends Component {
     
                 <div className={classes.AddCard_Container}>
                     <CreditCard 
-                        bank_name={this.state.credit_card.bank_name}
-                        card_author={this.state.credit_card.card_author}
-                        card_number={this.state.credit_card.card_number}
+                        bank_name={this.state.add_form.bank_name.value}
+                        card_author={this.state.add_form.your_name.value}
+                        card_number={this.state.add_form.number_card.value}
                         color={this.state.credit_card.colorText}
                         type={this.state.credit_card.colorCard}
                     />
@@ -107,11 +167,11 @@ class AddCard extends Component {
 
                     <p>Select Text Color</p>
                     <div className="d-flex">
-                        <BtnCircleColor />
-                        <BtnCircleColor />
+                        <Btn clicked={() => this.onTextColorHandler('white')} >White</Btn>
+                        <Btn clicked={() => this.onTextColorHandler('black')} >Black</Btn>
                     </div>
     
-                    <form className={classes.AddCard_Form}>
+                    <form onSubmit={this.onSubmitHandler} className={[classes.AddCard_Form, 'mt-10'].join(' ')}>
                        {formElementArr.map(item => (
                            <Input 
                                 key={item.id}
@@ -119,12 +179,14 @@ class AddCard extends Component {
                                 elementType={item.config.elementType}
                                 elementConfig={item.config.elementConfig}
                                 value={item.config.value}
-                                invalid={item.config.invalid}
-                                shouldValidate={item.config.shouldValidate}
+                                invalid={!item.config.valid}
+                                shouldValidate={item.config.validation}
                                 touched={item.config.touched}
                                 changed={(event) => this.onChangeHandler(event, item.id) }
                            />
                        ))}
+
+                       <button disabled={!this.state.formIsValid} className={classes.AddCard_Button} type="submit">SUBMIT</button>
                     </form>
     
                 </div>
