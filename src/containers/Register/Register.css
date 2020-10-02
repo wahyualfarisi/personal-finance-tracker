@@ -1,0 +1,55 @@
+.Register {
+    width: 80%;
+    margin: auto;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+}
+
+.Register__card {
+    width: 30%;
+    margin: auto;
+    padding: 1rem;
+    box-shadow: var(--shadow-light);
+}
+
+.Register__text {
+    color: var(--color-grey-dark-2);
+}
+
+.Register__button {
+    background-color: var(--color-primary-dark);
+    outline: none;
+    border: none;
+    display: block;
+    width: 100%;
+    padding: .8rem 0;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.Register__button:hover {
+    background-color: var(--color-primary-light);
+}
+
+.Register__button:active {
+    outline: none;
+}
+
+
+@media (max-width: 900px){
+    .Register__card {
+        width: 50%;
+    }
+}
+@media (max-width: 600px){
+    .Register__card {
+        width: 65%;
+    }
+}
+@media (max-width: 500px){
+    .Register__card {
+        width: 95%;
+    }
+}

@@ -5,6 +5,7 @@
 }
 
 .Label {
+    color: var(--color-grey-dark-2);
     font-weight: bold;
     display: block;
     margin-bottom: 8px;
@@ -14,12 +15,13 @@
     outline: none;
     border: 1px solid #ccc;
     background-color: white;
-    font: inherit;
+    font: 1rem;
     padding: 12px 20px;
     margin: 8px 0;
     display: block;
     width: 100%;
     box-sizing: border-box;
+    color: var(--color-grey-dark-2);
 }
 
 .InputElement:focus {

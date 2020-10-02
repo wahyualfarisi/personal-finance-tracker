@@ -4,6 +4,7 @@ import CreditCard from '../../components/UI/Cards/CreditCard/CreditCard';
 import BtnCircleColor from '../../components/UI/Buttons/BtnCircleColor/BtnCircleColor';
 import Input from '../../components/UI/Input/Input';
 import Btn from '../../components/UI/Buttons/Btn/Btn';
+import { onCheckValidity } from './../../utility/Utility';
 
 class AddCard extends Component {
 
@@ -68,42 +69,23 @@ class AddCard extends Component {
         card_collections: ['one','two','three','four','five','six']
     }
 
-    onCheckValidity = (value, validation) => {
-        let isValid = true;
-
-        if( validation.required ){
-            isValid = value.trim() !== "" && isValid;
-        }
-
-        if( validation.minLength ){
-            isValid = value.length >= validation.minLength && isValid;
-        }
-
-        if( validation.maxLength ){
-            isValid = value.length <= validation.maxLength && isValid;
-        }
-
-        return isValid;
-
-    }
+    
 
     onChangeHandler = (event, inputName) => {
         const updatedAddForm = { ...this.state.add_form };
 
         const updatedInput = { ...updatedAddForm[inputName] }
         updatedInput.value = event.target.value;
-        updatedInput.valid = this.onCheckValidity(event.target.value, updatedInput.validation)
+        updatedInput.valid = onCheckValidity(event.target.value, updatedInput.validation)
         updatedInput.touched = true;
 
         updatedAddForm[inputName] = updatedInput;
 
         let formIsValid = true;
         for(let key in updatedAddForm) {
-            formIsValid = updatedAddForm[key].valid && formIsValid
-            
+            formIsValid = updatedAddForm[key].valid && formIsValid   
         }
         
-
         this.setState({
             add_form: updatedAddForm,
             formIsValid: formIsValid
@@ -186,7 +168,11 @@ class AddCard extends Component {
                            />
                        ))}
 
-                       <button disabled={!this.state.formIsValid} className={classes.AddCard_Button} type="submit">SUBMIT</button>
+                       <button 
+                            disabled={!this.state.formIsValid} 
+                            className={classes.AddCard_Button} 
+                            type="submit">SUBMIT
+                        </button>
                     </form>
     
                 </div>
