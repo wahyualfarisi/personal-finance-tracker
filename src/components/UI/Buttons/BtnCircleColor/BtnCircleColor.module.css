@@ -2,10 +2,14 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 1px solid #000;
     cursor: pointer;
 }
 
 .BtnCircleColor:not(:last-child){
     margin-right: 2px;
+}
+
+.BtnCircleColor:focus:visited {
+    outline: none;
+    border: 3px solid black;
 }

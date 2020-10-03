@@ -135,7 +135,7 @@ class AddCard extends Component {
 
         return (
             <div className={classes.AddCard}>
-                <h2 className="Text-center">Add Card</h2>
+                <h2 className="Text-center">Add your Card</h2>
     
                 <div className={classes.AddCard_Container}>
                     <CreditCard 
@@ -149,7 +149,12 @@ class AddCard extends Component {
                     <p>Select Card Color</p>
                     <div className={classes.AddCard_Select_Color}>
                         {this.state.card_collections.map((item, i) => (
-                            <BtnCircleColor key={i} type={item} clicked={() => this.onColorHandler(item)} />
+                            <BtnCircleColor 
+                                selectedColor={this.state.credit_card.colorCard}
+                                key={i} 
+                                type={item} 
+                                clicked={() => this.onColorHandler(item)} 
+                            />
                         ))}
                     </div>
 

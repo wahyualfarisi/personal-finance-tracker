@@ -6,6 +6,7 @@
 
 .CardFinance_heading {
     display: flex;
+    
     justify-content: space-between;   
 }
 
@@ -16,5 +17,6 @@
 .CardFinance_Container {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    overflow: auto;
+    /* flex-wrap: wrap; */
 }

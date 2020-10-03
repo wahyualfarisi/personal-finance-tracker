@@ -3,6 +3,7 @@ import classes from './CardFinance.module.css';
 import CreditCard from '../../components/UI/Cards/CreditCard/CreditCard';
 import { Link } from 'react-router-dom';
 
+
 const CardFinance = () => {
 
     return (
@@ -16,40 +17,43 @@ const CardFinance = () => {
                 <CreditCard 
                     bank_name="BANK NAME" 
                     card_author="Wahyu Alfarisi"
-                    card_number="1233 9379 9373 0383"
+                    card_number="1233937993730383"
                     type="one" color="white" 
                 />
                 <CreditCard 
                     bank_name="BANK NAME" 
                     card_author="Wahyu Alfarisi"
-                    card_number="1233 9379 9373 0383"
+                    card_number="1233937993730383"
                     type="two" />
                 <CreditCard 
                     bank_name="BANK NAME" 
                     card_author="Wahyu Alfarisi"
-                    card_number="1233 9379 9373 0383"
+                    card_number="1233937993730383"
                     type="three" />
                 <CreditCard 
                     bank_name="BANK NAME" 
                     card_author="Wahyu Alfarisi"
-                    card_number="1233 9379 9373 0383"
+                    card_number="1233937993730383"
                     type="four" color="white" />
                 <CreditCard 
                     bank_name="BANK NAME" 
                     card_author="Wahyu Alfarisi"
-                    card_number="1233 9379 9373 0383"
+                    card_number="1233937993730383"
                     type="five" />
                 <CreditCard 
                     bank_name="BANK NAME" 
                     card_author="Wahyu Alfarisi"
-                    card_number="1233 9379 9373 0383"
+                    card_number="1233937993730383"
                     type="six" color="white" />
             </div>
 
             <div className="mt-20 Text-center">
                 
                 <Link to="/add"> ADD YOUR CARD </Link>
+                
+                
             </div>
+            
             
         </div>
     )
