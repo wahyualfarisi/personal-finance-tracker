@@ -1,24 +1,59 @@
 import React from 'react';
 import Layout from './hoc/Layout/Layout';
 import CardFinance from './containers/CardFinance/CardFinance';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import AddCard from './containers/AddCard/AddCard';
 import Login from './containers/Login/Login';
-import Register from './containers/Register/Register';
+import Logout from './containers/Logout/Logout';
 
-function App() {
+
+import Me from './containers/Me/Me';
+
+const App = (props) => {
+
+  let routes = (
+    <Switch>
+        <Route path="/" exact component={CardFinance} />
+        <Route path="/add" component={AddCard} />
+        <Route path="/login" component={Login} />
+        <Redirect to="/" />
+    </Switch>
+  );
+
+
+  if(props.isAuthenticated){
+    routes = (
+      <Switch>
+          <Route path="/" exact component={Me} />
+          <Route path="/add" component={AddCard} />
+          <Route path="/logout" component={Logout} />
+          <Redirect to="/" />
+      </Switch>
+    )
+  }
+
+
   return (
     <div>
         <Layout>
-            <Switch>
-                <Route path="/" exact component={CardFinance} />
-                <Route path="/add" component={AddCard} />
-                <Route path="/login" component={Login} />
-                <Route path="/register" component={Register} />
-            </Switch>
+            {routes}
         </Layout>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.token !== null 
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

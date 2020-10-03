@@ -22,7 +22,7 @@ export function* authInit( action ) {
 
     try{
         const res = yield Axios.post(url, authData);
-
+        console.log(res);
         const expirationDate = yield new Date( new Date().getTime() + res.data.expiresIn * 1000 );
 
         //save to localStorage 
@@ -35,6 +35,15 @@ export function* authInit( action ) {
     }catch(err){
         yield put( authActions.authFail( err.response.data.error ) );
     }
+}
 
+export function* logoutInit(action){
+    yield put( authActions.logoutStart() );
+
+    yield localStorage.removeItem('token');
+    yield localStorage.removeItem('expirationDate');
+    yield localStorage.removeItem('userId');
+
+    yield put( authActions.logoutDone())
 
 }

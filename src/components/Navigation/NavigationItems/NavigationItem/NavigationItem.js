@@ -8,6 +8,7 @@ const NavigationItem = (props) => {
             <NavLink to={props.link}>{props.children}</NavLink>
         </li>
     )
-}
+};
+
 
 export default NavigationItem

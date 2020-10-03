@@ -33,6 +33,20 @@ export default (state = initialState, action) => {
             error: action.error
         }
 
+        case actionTypes.LOGOUT_START:
+        return {
+            ...state,
+            loading: true 
+        }
+
+        case actionTypes.LOGOUT_DONE:
+        return {
+            token: null,
+            userId: null,
+            error: null,
+            loading: false
+        }
+
 
 
         default: 

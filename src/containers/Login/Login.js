@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import Input from './../../components/UI/Input/Input';
 import { onCheckValidity } from './../../utility/Utility';
 import './Login.css';
@@ -111,7 +112,7 @@ class Login extends Component {
             formData.push({
                 id: key,
                 config: this.state.form[key]
-            })
+            });
         }
 
         if(this.state.isSignUp){
@@ -122,11 +123,17 @@ class Login extends Component {
             textHeading = 'Login';
         }
 
+        let redirectIfAuthenticated = null;
+        if(this.props.isAuthenticated){
+            redirectIfAuthenticated = <Redirect to="/" />
+        }
+
         formUI = (
             <div style={{
                 display: 'flex',
                 flexDirection: 'column'
             }}>
+                {redirectIfAuthenticated}
                 {formData.map(item => (
                     <Input 
                         key={item.id}
@@ -167,7 +174,8 @@ class Login extends Component {
                     <Spinner />
                 </div>
             );
-        }
+        };
+
         
         return (
             <div className="Login">
@@ -188,7 +196,8 @@ class Login extends Component {
 const mapStateToProps = state => {
     return {
         loading: state.auth.loading,
-        error: state.auth.error
+        error: state.auth.error,
+        isAuthenticated: state.auth.token !== null
     }
 }
 

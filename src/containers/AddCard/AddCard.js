@@ -5,6 +5,7 @@ import BtnCircleColor from '../../components/UI/Buttons/BtnCircleColor/BtnCircle
 import Input from '../../components/UI/Input/Input';
 import Btn from '../../components/UI/Buttons/Btn/Btn';
 import { onCheckValidity } from './../../utility/Utility';
+import { connect } from 'react-redux';
 
 class AddCard extends Component {
 
@@ -114,6 +115,11 @@ class AddCard extends Component {
     onSubmitHandler = (e) => {
         e.preventDefault();
 
+        if(!this.props.isAuthenticated){
+            this.props.history.push('/login');
+            return;
+        }
+
         alert('ok')
     }
 
@@ -182,6 +188,10 @@ class AddCard extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.token !== null
+    }
+}
 
-
-export default AddCard;
+export default connect(mapStateToProps)(AddCard) ;
