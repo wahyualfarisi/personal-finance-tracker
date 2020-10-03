@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
-
 import Input from './../../components/UI/Input/Input';
 import { onCheckValidity } from './../../utility/Utility';
 import './Login.css';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import { connect  } from 'react-redux';
+import * as authActions from './../../store/actions/auth';
 
 class Login extends Component {
 
@@ -42,8 +42,6 @@ class Login extends Component {
             }
         },
         formIsValid: false,
-        isLoading: false,
-        message: null,
         isSignUp: false
     }
 
@@ -62,7 +60,6 @@ class Login extends Component {
             formIsValid = updatedForm[key].valid && formIsValid
         }
         
-
         this.setState({
             form: updatedForm,
             formIsValid
@@ -71,36 +68,15 @@ class Login extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        let type, url;
-
-        type = this.state.isSignUp ? 'signUp' : 'signInWithPassword';
-        url  = `https://identitytoolkit.googleapis.com/v1/accounts:${type}?key=AIzaSyAY0LVtm86E1YH5XAIbc0jt7WnbZ52j6Q0`;
-        
+      
         const data = {
             email: this.state.form.email.value,
-            password: this.state.form.password.value
+            password: this.state.form.password.value,
+            isSignUp: this.state.isSignUp
         }
 
-        this.setState({
-            isLoading: true,
-            message: ''
-        })
+        this.props.onAuth(data.email, data.password, data.isSignUp)
 
-        Axios.post(url, data )
-            .then(res => {
-                console.log(res)
-                this.setState({
-                    isLoading: false
-                })
-            })
-            .catch(err => {
-                console.log(err.response.data.error)
-                const { error } = err.response.data;
-                this.setState({
-                    message: `Code ${error.code} : ${error.message}`,
-                    isLoading: false
-                })
-            })
     }
 
     onSwitchAuth = () => {
@@ -177,11 +153,11 @@ class Login extends Component {
             </div>
         );
 
-        if(this.state.message){
-            message = (<p className="Login__message">{this.state.message}</p>)
+        if(this.props.error){
+            message = (<p className="Login__message">{this.props.error.message}</p>)
         }
 
-        if(this.state.isLoading){
+        if(this.props.loading){
             formUI = (
                 <div style={{
                     display: 'flex',
@@ -193,7 +169,6 @@ class Login extends Component {
             );
         }
         
-
         return (
             <div className="Login">
                 <div className="Login__card">
@@ -210,4 +185,17 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading,
+        error: state.auth.error
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (email, password, isSignUp) => dispatch( authActions.authInit(email, password, isSignUp)  )
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login) ;

@@ -13,8 +13,6 @@ const Layout = props => {
         prevShowSidebar.current = isShowSideDrawer;        
     }, [isShowSideDrawer]);
 
-
-
     const sideDrawerCloseHandler = () => setisShowSideDrawer(false);
 
     const sideDrawerToggleHandler = () => setisShowSideDrawer(!prevShowSidebar.current);
