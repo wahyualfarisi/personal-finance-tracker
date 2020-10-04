@@ -18,7 +18,7 @@
 
 .LandingPage__hero {
     display: flex;
-    margin-top: 1rem;
+    margin-bottom: 3rem;
     justify-content: space-between;
 }
 
@@ -57,4 +57,48 @@
 
 .LandingPage__Image-item {
     width: 100%;
+}
+
+@media(max-width: 900px){
+    .LandingPage__heading {
+        font-size: 4.6rem;
+    }
+    .LandingPage_paragraph {
+        font-size: .6rem;
+    }
+}
+
+@media(max-width: 800px){
+    .LandingPage__heading {
+        font-size: 3.6rem;
+    }
+    .LandingPage_paragraph {
+        font-size: .6rem;
+    }
+}
+
+@media(max-width: 600px){
+    .LandingPage__heading {
+        font-size: 3rem;
+    }
+    .LandingPage_paragraph {
+        font-size: .6rem;
+    }
+}
+
+@media(max-width: 500px){
+    .LandingPage__heading {
+        font-size: 2rem;
+    }
+    .LandingPage_paragraph {
+        font-size: .6rem;
+    }
+}
+@media(max-width: 340px){
+    .LandingPage__heading {
+        font-size: 1.5rem;
+    }
+    .LandingPage_paragraph {
+        font-size: .6rem;
+    }
 }
