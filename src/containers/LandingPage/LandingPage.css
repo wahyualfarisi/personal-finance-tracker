@@ -1,0 +1,60 @@
+.LandingPage {
+    width: 80%;
+    margin: auto;
+
+    
+}
+
+.LandingPageClipPath {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-primary-dark);
+    height: 100%;
+    width: 100%;
+    clip-path: circle(40% at 0 0);
+    z-index: -10;
+}
+
+.LandingPage__hero {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+
+.LandingPage__text {
+    flex: 0 0 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.LandingPage__heading {
+    font-size: 5.6rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+.LandingPage__heading span {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+.LandingPage_heading , span:nth-child(1){
+    color: orange;
+}
+
+.LandingPage_paragraph {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+.LandingPage__Image {
+    flex: 1;
+}
+
+.LandingPage__Image-item {
+    width: 100%;
+}

@@ -1,6 +1,5 @@
 import React from 'react';
 import Layout from './hoc/Layout/Layout';
-import CardFinance from './containers/CardFinance/CardFinance';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -10,12 +9,13 @@ import Logout from './containers/Logout/Logout';
 
 
 import Me from './containers/Me/Me';
+import LandingPage from './containers/LandingPage/LandingPage';
 
 const App = (props) => {
 
   let routes = (
     <Switch>
-        <Route path="/" exact component={CardFinance} />
+        <Route path="/" exact component={LandingPage} />
         <Route path="/add" component={AddCard} />
         <Route path="/login" component={Login} />
         <Redirect to="/" />
