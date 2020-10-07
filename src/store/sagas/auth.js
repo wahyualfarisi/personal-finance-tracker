@@ -1,7 +1,39 @@
-import { put } from 'redux-saga/effects';
+import { put, delay } from 'redux-saga/effects';
 import * as authActions from './../actions/auth';
 
 import Axios from 'axios';
+
+export function* authCheckStateSaga(action) {
+    const token = yield localStorage.getItem('token');
+    const userId = yield localStorage.getItem('userId');
+
+    // for debug purposes
+    // const expirationDate = 'Wed Oct 07 2020 19:20:00 GMT+0700 (Western Indonesia Time)';
+
+    const expirationDate = yield localStorage.getItem('expirationDate');
+
+    if( !token ){
+        yield put( authActions.logoutInit( ) )
+    }else {
+        const tokenDateExp = yield new Date( expirationDate );
+
+        if( tokenDateExp <= new Date() ) {
+
+            yield put( authActions.logoutInit() )
+
+        }else{
+
+            yield put( authActions.authSuccess( token, userId ) )
+            yield put( authActions.authCheckTimeOut( (tokenDateExp.getTime() - new Date().getTime()) / 1000 ) )
+            
+        }
+    }
+}
+
+export function* authCheckTimeOutSaga(action) {
+    yield delay( action.expiresIn * 1000 );
+    yield put( authActions.logoutInit() )
+}
 
 
 export function* authInit( action ) {
@@ -22,7 +54,6 @@ export function* authInit( action ) {
 
     try{
         const res = yield Axios.post(url, authData);
-        console.log(res);
         const expirationDate = yield new Date( new Date().getTime() + res.data.expiresIn * 1000 );
 
         //save to localStorage 
@@ -32,6 +63,7 @@ export function* authInit( action ) {
         //end ----------------
 
         yield put( authActions.authSuccess( res.data.idToken, res.data.localId ) );
+        yield put( authActions.authCheckTimeOut( res.data.expiresIn ))
     }catch(err){
         yield put( authActions.authFail( err.response.data.error ) );
     }
@@ -44,6 +76,6 @@ export function* logoutInit(action){
     yield localStorage.removeItem('expirationDate');
     yield localStorage.removeItem('userId');
 
-    yield put( authActions.logoutDone())
+    yield put( authActions.logoutDone());
 
 }

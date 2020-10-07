@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, useEffect } from 'react';
 import Layout from './hoc/Layout/Layout';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -11,38 +11,48 @@ import Logout from './containers/Logout/Logout';
 import Me from './containers/Me/Me';
 import LandingPage from './containers/LandingPage/LandingPage';
 
-const App = (props) => {
+import * as authActions from './store/actions/auth';
 
-  let routes = (
-    <Switch>
-        <Route path="/" exact component={LandingPage} />
-        <Route path="/add" component={AddCard} />
-        <Route path="/login" component={Login} />
-        <Redirect to="/" />
-    </Switch>
-  );
+class App extends Component {
 
-
-  if(props.isAuthenticated){
-    routes = (
-      <Switch>
-          <Route path="/" exact component={Me} />
-          <Route path="/add" component={AddCard} />
-          <Route path="/logout" component={Logout} />
-          <Redirect to="/" />
-      </Switch>
-    )
+  componentDidMount(){
+    this.props.onCheckState()
   }
 
+  render() {
+    let routes = (
+      <Switch>
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/add" component={AddCard} />
+          <Route path="/login" component={Login} />
+          <Redirect to="/" />
+      </Switch>
+    );
+  
+  
+    if(this.props.isAuthenticated){
+      routes = (
+        <Switch>
+            <Route path="/" exact component={Me} />
+            <Route path="/add" component={AddCard} />
+            <Route path="/logout" component={Logout} />
+            <Redirect to="/" />
+        </Switch>
+      )
+    }
+  
+  
+    return (
+      <div>
+          <Layout>
+              {routes}
+          </Layout>
+      </div>
+    );
+  }
+} 
+  
 
-  return (
-    <div>
-        <Layout>
-            {routes}
-        </Layout>
-    </div>
-  );
-}
 
 const mapStateToProps = state => {
   return {
@@ -52,7 +62,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-
+    onCheckState: () => dispatch( authActions.authCheckState( ) )
   }
 }
 
