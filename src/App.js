@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import Layout from './hoc/Layout/Layout';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import AddCard from './containers/AddCard/AddCard';
 import Login from './containers/Login/Login';
 import Logout from './containers/Logout/Logout';
-
 
 import Me from './containers/Me/Me';
 import LandingPage from './containers/LandingPage/LandingPage';

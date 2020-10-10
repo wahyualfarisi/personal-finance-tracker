@@ -6,6 +6,7 @@ import Input from '../../components/UI/Input/Input';
 import Btn from '../../components/UI/Buttons/Btn/Btn';
 import { onCheckValidity } from './../../utility/Utility';
 import { connect } from 'react-redux';
+import axios from './../../axios-instance';
 
 class AddCard extends Component {
 
@@ -59,8 +60,6 @@ class AddCard extends Component {
                 valid: false,
                 touched: false
             },
-           
-
         },
         formIsValid: false,
         credit_card: {
@@ -120,7 +119,24 @@ class AddCard extends Component {
             return;
         }
 
-        alert('ok')
+        const form_data = {
+            userId: this.props.userId,
+            bank_name: this.state.add_form.bank_name.value,
+            number_card: this.state.add_form.number_card.value,
+            name_card: this.state.add_form.your_name.value,
+            theme_card: {
+                background: this.state.credit_card.colorCard,
+                color: this.state.credit_card.colorText
+            }
+        }
+
+        axios.post(`/card_collection.json?auth=${this.props.token}`, form_data)
+             .then(res => {
+                 console.log(res);
+             })        
+             .catch(err => {
+                 console.log(err);
+             })
     }
 
     render(){
@@ -195,7 +211,9 @@ class AddCard extends Component {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.auth.token !== null
+        isAuthenticated: state.auth.token !== null,
+        userId: state.auth.userId,
+        token: state.auth.token
     }
 }
 
