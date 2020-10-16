@@ -1,0 +1,139 @@
+.MeContainer {
+    display: flex;
+}
+
+.CardList {
+    /* background-color: red; */
+    flex: 0 0 70%;
+    margin-right: auto;
+
+    /* for testing purposes */
+    height: 100vh;
+}
+
+
+
+
+
+/* CardList Content ------------------------------------ */
+.CardListContent {
+    margin: 0 4rem;
+    /* background-color: green; */
+}
+.CardListContent h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--color-grey-dark-1);
+}
+/* End CardList Content ------------------------------------ */
+
+
+
+
+
+
+
+
+/* CardListHeading Content ------------------------------------ */
+.CardListHeading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--color-grey-dark-3);
+}
+.CardListHeading h3 {
+    font-size: 1.2rem;
+    color: var(--color-grey-dark-2);
+}
+.CardListHeading a {
+    text-decoration: none;
+    border: 1px solid var(--color-grey-dark-2);
+    padding: .8rem .9rem;
+    border-radius: 9px;
+    color: var(--color-grey-dark-1);
+    font-weight: 900;
+
+    transition: .4s;
+}
+.CardListHeading a:hover {
+    color: #fff;
+    background-color: var(--color-primary-dark);
+}
+/* End CardListHeading Content ------------------------------------ */
+
+
+
+
+
+/* CardTransaction ------------------------------------ */
+.CardTransaction {
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    margin-top: -25px;
+    flex: 1;
+}
+
+.CardTransactionContent {
+    margin-top: 1.4rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+}
+
+.CardTransactionHeading h6 {
+    color: var(--color-grey-dark-3);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.CardTransactionList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.CardTransactionItem {
+    display: flex;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-grey-light-2);
+}
+.CardTransactionItem:not(:last-child){
+    margin-bottom: 2.5rem;
+}
+
+.IconInc {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #28df99;
+    margin-right: 1rem;
+}
+.IconExp {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ed6663;
+    margin-right: 1rem;
+}
+
+
+.TransactionItem {
+    
+}
+
+.TransactionItem h6 {
+    margin: 0;
+    padding: 0;
+    font-size: .8rem;
+    font-weight: 600;
+}
+.TransactionItem p {
+    font-size: .7rem;
+    margin: 0;
+    padding: 0;
+    
+}
+
+
+
+/* End CardTransaction ------------------------------------ */
