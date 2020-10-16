@@ -175,7 +175,7 @@
 
 @media(min-width: 900px){
     .CreditCard {
-        width: 32.5%;
+        /* width: 32.5%; */
         padding: 25px;
     }
 

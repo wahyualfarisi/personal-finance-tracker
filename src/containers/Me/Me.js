@@ -1,6 +1,7 @@
 import React , { Component } from 'react';
 import classes from './Me.module.css';
 import { Link } from 'react-router-dom'
+import CreditCard from './../../components/UI/Cards/CreditCard/CreditCard';
 
 
 class Me extends Component {
@@ -14,12 +15,102 @@ class Me extends Component {
                     <div className={classes.CardListContent}>
                         <h1>Card List</h1>
                         <div className={classes.CardListHeading}>
-                            <h3>Collection</h3>
+                            <h3>Collections</h3>
                             <Link to="/add"> ADD CARD </Link>
+                        </div>
+
+                        <div className={classes.CardListData}>
+
+                            <div className={classes.CardListItem}>
+                                <CreditCard 
+                                    card_number="1234123498987876"
+                                    bank_name="BANK BCA"
+                                    color="white"
+                                    card_author="wahyu alfarisi"
+                                />
+
+                                <div className={classes.CardListItem_Amount}>
+                                   <div className={classes.CardListItem_Amount_Item}>
+                                        <h3 className={classes.TitleItem}>Total Expense</h3>
+                                        <p className={classes.AmountItem}>Rp. 25.000.000</p>
+                                   </div>
+                                   <div className={classes.CardListItem_Amount_Item}>
+                                        <h3 className={classes.TitleItem}>Total Income</h3>
+                                        <p className={classes.AmountItem}>Rp. 95.000.000</p>
+                                   </div>
+                                   <div className={classes.CardListItem_Amount_Item}>
+                                        <h3 className={classes.TitleItem}>Total Balance</h3>
+                                        <p className={classes.AmountItem}>Rp. 70.000.000</p>
+                                   </div>
+
+                                   <div className={classes.CardListItem_Link}>
+                                        <Link to="/">Add Transaction &rarr; </Link>
+                                   </div>
+                                </div>
+                            </div>
+
+                            <div className={classes.CardListItem}>
+                                <CreditCard 
+                                    card_number="1234123498987876"
+                                    bank_name="BANK BCA"
+                                    color="white"
+                                    card_author="wahyu alfarisi"
+                                    type="five"
+                                />
+
+                                <div className={classes.CardListItem_Amount}>
+                                   <div className={classes.CardListItem_Amount_Item}>
+                                        <h3 className={classes.TitleItem}>Total Expense</h3>
+                                        <p className={classes.AmountItem}>Rp. 25.000.000</p>
+                                   </div>
+                                   <div className={classes.CardListItem_Amount_Item}>
+                                        <h3 className={classes.TitleItem}>Total Income</h3>
+                                        <p className={classes.AmountItem}>Rp. 95.000.000</p>
+                                   </div>
+                                   <div className={classes.CardListItem_Amount_Item}>
+                                        <h3 className={classes.TitleItem}>Total Balance</h3>
+                                        <p className={classes.AmountItem}>Rp. 70.000.000</p>
+                                   </div>
+
+                                   <div className={classes.CardListItem_Link}>
+                                        <Link to="/">Add Transaction &rarr; </Link>
+                                   </div>
+                                </div>
+                            </div>
+
+                            <div className={classes.CardListItem}>
+                                <CreditCard 
+                                    card_number="1234123498987876"
+                                    bank_name="BANK BCA"
+                                    color="white"
+                                    card_author="wahyu alfarisi"
+                                    type="four"
+                                />
+
+                                <div className={classes.CardListItem_Amount}>
+                                   <div className={classes.CardListItem_Amount_Item}>
+                                        <h3 className={classes.TitleItem}>Total Expense</h3>
+                                        <p className={classes.AmountItem}>Rp. 25.000.000</p>
+                                   </div>
+                                   <div className={classes.CardListItem_Amount_Item}>
+                                        <h3 className={classes.TitleItem}>Total Income</h3>
+                                        <p className={classes.AmountItem}>Rp. 95.000.000</p>
+                                   </div>
+                                   <div className={classes.CardListItem_Amount_Item}>
+                                        <h3 className={classes.TitleItem}>Total Balance</h3>
+                                        <p className={classes.AmountItem}>Rp. 70.000.000</p>
+                                   </div>
+
+                                   <div className={classes.CardListItem_Link}>
+                                        <Link to="/">Add Transaction &rarr; </Link>
+                                   </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
-                    <div></div>
+                   
                 </div>
 
 

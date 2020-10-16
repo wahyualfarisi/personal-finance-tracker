@@ -52,7 +52,7 @@ const CreditCard = props => {
         
     }
 
-    let transformCreditCardFormat = props.card_number.trim();
+    let transformCreditCardFormat = props.card_number ? props.card_number.trim() : '';
     transformCreditCardFormat.split('-').join('');
     if(transformCreditCardFormat.length > 0 ){
         transformCreditCardFormat = transformCreditCardFormat.match(new RegExp('.{1,4}', 'g')).join(' ')
