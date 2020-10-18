@@ -154,13 +154,15 @@ class AddCard extends Component {
                 <h2 className="Text-center">Add your Card</h2>
     
                 <div className={classes.AddCard_Container}>
-                    <CreditCard 
-                        bank_name={this.state.add_form.bank_name.value}
-                        card_author={this.state.add_form.your_name.value}
-                        card_number={this.state.add_form.number_card.value}
-                        color={this.state.credit_card.colorText}
-                        type={this.state.credit_card.colorCard}
-                    />
+                    <div className={classes.AddCard_CreditCard}>
+                        <CreditCard 
+                            bank_name={this.state.add_form.bank_name.value}
+                            card_author={this.state.add_form.your_name.value}
+                            card_number={this.state.add_form.number_card.value}
+                            color={this.state.credit_card.colorText}
+                            type={this.state.credit_card.colorCard}
+                        />
+                    </div>
 
                     <p>Select Card Color</p>
                     <div className={classes.AddCard_Select_Color}>

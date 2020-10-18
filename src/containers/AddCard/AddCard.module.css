@@ -9,6 +9,10 @@
     flex-direction: column;
 }
 
+.AddCard_CreditCard {
+    width: 100%;
+}
+
 .AddCard_Select_Color {
     width: 100%;
     display: flex;
@@ -52,10 +56,11 @@
 }
 
 @media(min-width: 500px){
-    .AddCard_Select_Color {
+    .AddCard_Select_Color, .AddCard_CreditCard {
         width: 29%;
     }
     .AddCard_Form{
         width: 30%;
     }
+  
 }
