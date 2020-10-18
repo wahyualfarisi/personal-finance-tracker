@@ -1,6 +1,8 @@
 
 /* Container */
 .MeContainer {
+    width: 100%;
+    margin: auto;
     display: flex;
 }
 
@@ -25,7 +27,8 @@
 
 @media screen and (max-width: 500px) {
     .CardList {
-        flex: 1;
+        flex: 0 0 100%;
+        /* display: none; */
     }
     .CardTransaction {
         display: none;
