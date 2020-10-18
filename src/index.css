@@ -46,3 +46,25 @@ body {
 .d-flex {
   display: flex;
 }
+
+.IconInc {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #28df99;
+  margin-right: 1rem;
+}
+.IconExp {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ed6663;
+  margin-right: 1rem;
+}
+.IconBalance {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #000;
+  margin-right: 1rem;
+}

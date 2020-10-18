@@ -128,10 +128,6 @@
 }
 
 @media(min-width: 500px){
-    .CreditCard {
-        width: 49%;
-    }
-
     .CreditCard_Number {
         font-size: .4rem;
     }
@@ -143,8 +139,11 @@
 
 @media(min-width: 638px){
     .CreditCard {
-        width: 49%;
-        padding: 15px;
+        /* width: 100%; */
+        /* padding: 0; */
+    }
+
+    .CreditCard {
         border-radius: 15px;
     }
     
@@ -175,8 +174,8 @@
 
 @media(min-width: 900px){
     .CreditCard {
-        /* width: 32.5%; */
-        padding: 25px;
+        /* width: 32.5%;
+        padding: 25px; */
     }
 
     .CreditCard_Icon_Sim {
@@ -185,7 +184,7 @@
     }
 
     .CreditCard_Number {
-        font-size: 1.2vw;
+        font-size: 1vw;
     }
 
     .CreditCard_Logo div {

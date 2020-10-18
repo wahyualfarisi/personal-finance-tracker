@@ -1,0 +1,56 @@
+
+.CardListItem_Amount_Item {
+    display: flex;
+    justify-content: space-between;
+}
+.CardListItem_Amount_Item:not(:last-child){
+    margin-bottom: 1rem;
+}
+.TitleItem {
+    margin: 0;
+    margin-right: auto;
+    font-size: 1rem;
+    font-weight: 300;
+}
+.AmountItem {
+    margin: 0;
+    font-size: .7rem;
+    font-weight: 900;
+    color: #158467;
+}
+
+@media screen and (max-width: 950px) {
+    .CardListItem_Amount {
+        margin-left: 1rem;
+    }
+    .TitleItem {
+        font-size: .8rem;
+    }
+}
+
+@media screen and (max-width: 795px) {
+    .CardListItem_Amount {
+        margin-left: .8rem;
+    }
+    .TitleItem {
+        font-size: .5rem;
+    }
+}
+@media screen and (max-width: 680px) {
+    .AmountItem {
+        font-size: .5rem;
+    }
+}
+@media screen and (max-width: 500px) {
+    .TitleItem {
+        display: none;
+    }
+    .AmountItem {
+        font-weight: 600;
+        font-size: .3rem;
+    }
+
+    .CardListItem_Link a {
+        font-size: 1rem;
+    }
+}

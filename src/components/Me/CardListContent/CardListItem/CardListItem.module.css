@@ -1,0 +1,57 @@
+
+.CardListData {
+    margin-top: 1rem;
+    box-sizing: border-box;
+}
+
+.CardListItem {
+    background-color: #F6F6F6;
+    border-radius: 10px;
+    padding: 1rem;
+
+    display: flex;
+}
+.CardListItem:not(:last-child){
+    margin-bottom: 1rem;
+}
+
+.CardListItem_Amount {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 2rem;
+}
+
+.CardListItem_Link {
+    align-self: flex-end;
+}
+.CardListItem_Link a {
+    text-decoration: none;
+    color: var(--color-grey-dark-2);
+    border-bottom: 1px solid var(--color-grey-dark-2);
+    font-weight: bold;
+}
+.CardListItem_Link a:hover {
+    border-bottom: 2px solid #158467;
+}
+
+
+@media screen and (max-width: 950px) {
+    .CardListItem_Amount {
+        margin-left: 1rem;
+    }
+}
+
+@media screen and (max-width: 795px) {
+    .CardListItem_Amount {
+        margin-left: .8rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .CardListItem_Link a {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,32 @@
+.CardTransactionContent {
+    margin-top: 1.4rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.CardTransactionHeading h6 {
+    color: var(--color-grey-dark-3);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 680px) {
+    .CardTransactionContent {
+        margin-top: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .CardTransactionHeading h6 {
+        font-size: .8rem;
+    }
+}
+
+/* End Card Transaction  */
+
+.CardTransactionList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    margin-bottom: 5rem;
+}

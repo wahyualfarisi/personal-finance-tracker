@@ -1,0 +1,21 @@
+.CardListContent {
+    margin: 0 4rem;
+}
+
+.CardListContent h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--color-grey-dark-1);
+}
+@media screen and (max-width: 950px){
+    .CardListContent {
+        margin: 0 2rem
+    }
+}
+@media screen and (max-width: 680px) {
+    .CardListContent h1 {
+        font-size: 2.5rem;
+    }
+}
+
+
