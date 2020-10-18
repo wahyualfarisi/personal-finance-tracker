@@ -66,7 +66,8 @@ class AddCard extends Component {
             colorCard: 'one',
             colorText: 'white'
         },
-        card_collections: ['one','two','three','four','five','six']
+        card_collections: ['one','two','three','four','five','six'],
+        isLoading: false
     }
 
     
@@ -99,7 +100,6 @@ class AddCard extends Component {
                 colorCard: typeColor
             }
         })
-        console.log(this.state)
     }
 
     onTextColorHandler = color => {
@@ -119,6 +119,8 @@ class AddCard extends Component {
             return;
         }
 
+        this.setState({ isLoading: true })
+
         const form_data = {
             userId: this.props.userId,
             bank_name: this.state.add_form.bank_name.value,
@@ -130,11 +132,13 @@ class AddCard extends Component {
             }
         }
 
-        axios.post(`/card_collection.json?auth=${this.props.token}`, form_data)
+        axios.post(`/card_collections.json?auth=${this.props.token}`, form_data)
              .then(res => {
-                 console.log(res);
+                this.setState({ isLoading: false })
+                console.log(this.props.history.push('/'))
              })        
              .catch(err => {
+                this.setState({ isLoading: false })
                  console.log(err);
              })
     }
@@ -198,9 +202,10 @@ class AddCard extends Component {
                        ))}
 
                        <button 
-                            disabled={!this.state.formIsValid} 
+                            disabled={!this.state.formIsValid || this.state.isLoading} 
                             className={classes.AddCard_Button} 
-                            type="submit">SUBMIT
+                            type="submit">
+                            {this.state.isLoading ? 'Loading': 'Submit'}
                         </button>
                     </form>
     

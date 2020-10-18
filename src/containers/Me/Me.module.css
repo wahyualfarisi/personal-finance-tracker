@@ -23,7 +23,7 @@
     height: 100%;
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 500px) {
     .CardList {
         flex: 1;
     }
