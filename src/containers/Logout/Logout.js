@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as authActions from './../../store/actions/auth';
 import { Redirect } from 'react-router-dom';
 
-class Logout extends Component {
+const Logout = (props) => {
 
-    componentDidMount(){
-        this.props.onLogout();
-    }
+    useEffect( () => {
+        props.onLogout();
+    }, [props] )
 
-    render(){
-        if(this.props.loading){
-            return <div>LOADING ...</div>
-        }else{
-            return <Redirect to="/" />
-        }
-
+    if(props.loading){
+        return <div>LOADING ...</div>
+    }else{
+        return <Redirect to="/" />
     }
 }
 

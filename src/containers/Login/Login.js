@@ -35,7 +35,7 @@ const Login = (props) => {
 
         const { email , password } = state.form;
 
-        props.onAuth(email.value, password.value);
+        props.onAuth( email.value, password.value, state.isSignUp);
         
     }
 
