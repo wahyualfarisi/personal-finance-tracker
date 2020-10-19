@@ -1,197 +1,118 @@
-import React, { Component } from 'react';
+import React, { useReducer } from 'react';
 import { Redirect } from 'react-router-dom';
 import Input from './../../components/UI/Input/Input';
-import { onCheckValidity } from './../../utility/Utility';
 import './Login.css';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import { connect  } from 'react-redux';
 import * as authActions from './../../store/actions/auth';
+import { initialState, reducer, actionCreators  } from './store/reducer';
 
-class Login extends Component {
+const Login = (props) => {
 
-    state = {
-        form: {
-            email: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'email',
-                    placeholder: 'Enter your email'
-                },
-                label: 'Email',
-                value: '',
-                validation: {
-                    isRequired: true,
-                    isEmail: true
-                },
-                valid: false,
-                touched: false
-            },
-            password: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'password',
-                    placeholder: 'Enter your password'
-                },
-                label: 'Password',
-                value: '',
-                validation: {
-                    isRequired: true,
-                    minLength: 6
-                },
-                valid: false,
-                touched: false
-            }
-        },
-        formIsValid: false,
-        isSignUp: false
+    const [ state, dispatch ] = useReducer(reducer, initialState)
+
+
+    let formUI = null, formData = [], textDirection = '', textHeading = '';
+
+
+    if( state.isSignUp ) {
+        textDirection = 'Login';
+        textHeading = 'Register';
+    }else{
+        textDirection = 'Register';
+        textHeading = 'Login';
     }
 
-    onChangeHandler = (event, inputName) => {
-        const updatedForm = { ...this.state.form }
-        const updatedFormInput = { ...updatedForm[inputName] }
-        updatedFormInput.valid = onCheckValidity(event.target.value, updatedFormInput.validation);
-        updatedFormInput.value = event.target.value;
-        updatedFormInput.touched = true;
-
-        updatedForm[inputName] = updatedFormInput;
-
-        let formIsValid = true;
-        for(let key in updatedForm)
-        {
-            formIsValid = updatedForm[key].valid && formIsValid
-        }
-        
-        this.setState({
-            form: updatedForm,
-            formIsValid
+    for(let key in state.form){
+        formData.push({
+            id: key,
+            config: state.form[key]
         })
     }
 
-    onSubmit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault();
-      
-        const data = {
-            email: this.state.form.email.value,
-            password: this.state.form.password.value,
-            isSignUp: this.state.isSignUp
-        }
 
-        this.props.onAuth(data.email, data.password, data.isSignUp)
+        const { email , password } = state.form;
 
+        props.onAuth(email.value, password.value);
+        
     }
 
-    onSwitchAuth = () => {
-        this.setState(prevState => ({
-            ...prevState,
-            isSignUp: !prevState.isSignUp,
-            form: {
-                ...prevState.form,
-                email: {
-                    ...prevState.form.email,
-                    value: '',
-                    valid: false
-                },
-                password: {
-                    ...prevState.form.password,
-                    value: '',
-                    valid: false
-                }
-            },
-            formIsValid: false
-        }))
+    let redirectIfAuthenticated = null;
+    
+    if( props.isAuthenticated ){
+        redirectIfAuthenticated = <Redirect to="/" />
     }
 
-    render(){
-        let formData = [], 
-            formUI = null, 
-            message = null, 
-            textButton = '', 
-            textHeading = '';
+    formUI = (
+        <div style={{ display: 'flex', flexDirection: 'column' }}>  
+            {redirectIfAuthenticated}
+            {formData.map(item => (
+                <Input 
+                    key={item.id}
+                    label={item.config.label}
+                    elementType={item.config.elementType}
+                    elementConfig={item.config.elementConfig}
+                    value={item.config.value}
+                    touched={item.config.touched}
+                    inValid={!item.config.valid}
+                    shouldValidate={item.config.validate}
+                    changed={(e) => {
+                        dispatch( actionCreators.changeInputHandler(e.target.value, item.id) )
+                    } }
+                />
+            ))}
+            <div>
+                <button 
+                    type="submit" 
+                    disabled={!state.formIsValid} 
+                    className="Login__button"> SUBMIT 
+                </button>
+            </div>
 
-        for(let key in this.state.form){
-            formData.push({
-                id: key,
-                config: this.state.form[key]
-            });
-        }
+            <button
+                type="button"
+                className="Login__button_switch"
+                onClick={() => dispatch( actionCreators.switchAuth() ) }
+            >
+                { textDirection }
+                &rarr;
+            </button>
+        </div>
+    );
 
-        if(this.state.isSignUp){
-            textButton = 'Login';
-            textHeading = 'Register';
-        }else{
-            textButton = 'Register';
-            textHeading = 'Login';
-        }
-
-        let redirectIfAuthenticated = null;
-        if(this.props.isAuthenticated){
-            redirectIfAuthenticated = <Redirect to="/" />
-        }
-
+    if(props.loading){
         formUI = (
             <div style={{
                 display: 'flex',
-                flexDirection: 'column'
+                justifyContent: 'center',
+                alignItems: 'center'    
             }}>
-                {redirectIfAuthenticated}
-                {formData.map(item => (
-                    <Input 
-                        key={item.id}
-                        label={item.config.label}
-                        elementType={item.config.elementType}
-                        elementConfig={item.config.elementConfig}
-                        value={item.config.value}
-                        touched={item.config.touched}
-                        inValid={!item.config.valid}
-                        shouldValidate={item.config.validation}
-                        changed={(event) => this.onChangeHandler(event, item.id) }
-                    />
-                ))}
-                <div>
-                    <button type="submit" disabled={!this.state.formIsValid} className="Login__button">SUBMIT</button>
-                </div>
-
-                <button 
-                    type="button"
-                    onClick={this.onSwitchAuth}
-                    className="Login__button_switch">
-                    {textButton}
-                &rarr; </button>
-            </div>
-        );
-
-        if(this.props.error){
-            message = (<p className="Login__message">{this.props.error.message}</p>)
-        }
-
-        if(this.props.loading){
-            formUI = (
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                    <Spinner />
-                </div>
-            );
-        };
-
-        
-        return (
-            <div className="Login">
-                <div className="Login__card">
-                    <div className="Login__content">
-                        <h1 className="Login__text">{textHeading}</h1>
-                        <form className="Login__form" onSubmit={this.onSubmit}>
-                            {formUI}
-                            {message}
-                        </form>
-                    </div>
-                </div>
+                <Spinner />
             </div>
         )
     }
-}
+
+    
+
+   
+    return (
+        <div className="Login">
+            <div className="Login__card">
+                <div className="Login__content">
+                    <h1 className="Login__text">
+                        {textHeading}
+                    </h1>
+                    <form className="Login__form" onSubmit={onSubmit}>
+                        {formUI}
+                    </form>
+                </div>
+            </div>
+        </div>
+    )
+}  
+
 
 const mapStateToProps = state => {
     return {
