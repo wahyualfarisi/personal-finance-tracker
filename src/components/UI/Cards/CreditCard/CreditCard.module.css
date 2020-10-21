@@ -4,6 +4,8 @@
     box-sizing: border-box;
     border-radius: 10px;
     margin-bottom: 5px;
+
+    transition: 5s all;
 }
 
 .CreditCard_Icon_Sim {
