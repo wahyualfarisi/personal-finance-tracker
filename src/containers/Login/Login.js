@@ -7,13 +7,13 @@ import { connect  } from 'react-redux';
 import * as authActions from './../../store/actions/auth';
 import { initialState, reducer } from './store/reducer';
 import * as actionCreators from './store/actions';
+import Alert from '../../components/UI/Alert/Alert';
 
 const Login = (props) => {
 
     const [ state, dispatch ] = useReducer(reducer, initialState)
 
     let formUI = null, formData = [], textDirection = '', textHeading = '';
-
 
     if( state.isSignUp ) {
         textDirection = 'Login';
@@ -36,6 +36,7 @@ const Login = (props) => {
         const { email , password } = state.form;
 
         props.onAuth( email.value, password.value, state.isSignUp);
+        
         
     }
 
@@ -79,6 +80,7 @@ const Login = (props) => {
                 { textDirection }
                 &rarr;
             </button>
+            
         </div>
     );
 
@@ -94,9 +96,7 @@ const Login = (props) => {
         )
     }
 
-    
 
-   
     return (
         <div className="Login">
             <div className="Login__card">
@@ -108,6 +108,7 @@ const Login = (props) => {
                         {formUI}
                     </form>
                 </div>
+             { props.error && <Alert type="Warning">{props.error.message}</Alert> }
             </div>
         </div>
     )
