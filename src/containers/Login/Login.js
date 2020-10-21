@@ -5,12 +5,12 @@ import './Login.css';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import { connect  } from 'react-redux';
 import * as authActions from './../../store/actions/auth';
-import { initialState, reducer, actionCreators  } from './store/reducer';
+import { initialState, reducer } from './store/reducer';
+import * as actionCreators from './store/actions';
 
 const Login = (props) => {
 
     const [ state, dispatch ] = useReducer(reducer, initialState)
-
 
     let formUI = null, formData = [], textDirection = '', textHeading = '';
 

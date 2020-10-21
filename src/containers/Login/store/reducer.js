@@ -1,14 +1,5 @@
 import { onCheckValidity } from './../../../utility/Utility';
-
-const types = {
-    SWITCH_AUTH: 'SWITCH_AUTH',
-    CHANGE_INPUT: 'CHANGE_INPUT'
-}
-
-export const actionCreators = {
-    switchAuth: () => ({ type: types.SWITCH_AUTH }),
-    changeInputHandler: ( value, inputName ) => ({ type: types.CHANGE_INPUT, value: value, inputName: inputName })
-}
+import * as types from './types';
 
 export const initialState = {
     form: {
@@ -53,7 +44,22 @@ export function reducer(state, action) {
         case types.SWITCH_AUTH:
         return {
             ...state,
-            isSignUp: !state.isSignUp
+            isSignUp: !state.isSignUp,
+            form: {
+                ...state.form,
+                email: {
+                    ...state.form.email,
+                    value: '',
+                    valid: false,
+                    touched: false
+                },
+                password: {
+                    ...state.form.password,
+                    value: '',
+                    valid: false,
+                    touched: false
+                }
+            }
         }
 
         case types.CHANGE_INPUT:
@@ -74,6 +80,8 @@ export function reducer(state, action) {
             form: updatedForm,
             formIsValid: formIsValid
         }
+
+      
 
         default: 
 
