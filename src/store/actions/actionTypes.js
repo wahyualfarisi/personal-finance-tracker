@@ -10,3 +10,11 @@ export const LOGOUT_INIT = 'LOGOUT_INIT';
 export const LOGOUT_START = 'LOGOUT_START';
 export const LOGOUT_DONE = 'LOGOUT_DONE';
 
+
+/* --------------------START ADD CARD----------------------------------- */
+export const CARD_INIT = 'CARD_INIT';
+export const CARD_START = 'CARD_START';
+export const CARD_FAILED = 'CARD_FAILED';
+export const CARD_DONE = 'CARD_DONE';
+/* --------------------END ADD CARD----------------------------------- */
+

@@ -8,6 +8,7 @@ import SelectCardColor from '../../components/AddCard/SelectCardColor/SelectCard
 import SelectTextColor from '../../components/AddCard/SelectTextColor/SelectTextColor';
 import FormDataCard from '../../components/AddCard/FormDataCard/FormDataCard';
 
+import * as actionsRedux from './../../store/actions/card';
 
 
 const AddCard = ( props ) => {
@@ -16,6 +17,12 @@ const AddCard = ( props ) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
+        
+        if(!props.isAuthenticated) {
+            props.history.push('/login')
+            return;
+        }
+
         const form_data = {
             userId: props.userId,
             bank_name: state.add_form.bank_name.value,
@@ -24,10 +31,14 @@ const AddCard = ( props ) => {
             theme_card: {
                 background: state.credit_card.colorCard,
                 color: state.credit_card.colorText
+            },
+            transaction: {
+                inc: 0,
+                exp: 0
             }
         }
 
-        console.log(form_data)
+        props.onSubmitCard(form_data, props.token)
         
     }
 
@@ -53,7 +64,7 @@ const AddCard = ( props ) => {
                     inputHandler={(value, inputName) => dispatch( actions.inputHandler(value, inputName) ) }
                     submitHandler={submitHandler}
                 />
-                
+
             </div>
         </div>
     )
@@ -68,4 +79,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(AddCard) ;
+const mapDispatchToProps = dispatch => {
+    return {
+        onSubmitCard: ( form_data, token ) => dispatch( actionsRedux.addCardInit(form_data, token) ) 
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddCard) ;
