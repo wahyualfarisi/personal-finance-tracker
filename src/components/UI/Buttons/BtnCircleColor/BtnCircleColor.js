@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './BtnCircleColor.module.css';
 import classesColors from './../../Cards/CreditCard/CreditCard.module.css';
-import IconCheckMark from './../../../../assets/SVG/checkmark.svg';
 import Icon from '../../Icon/Icons';
 
 const BtnCircleColor = props => {

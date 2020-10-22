@@ -1,0 +1,11 @@
+.AddCard_Select_Color {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (min-width: 600px) {
+    .AddCard_Select_Color {
+        width: 39%;
+    }
+}

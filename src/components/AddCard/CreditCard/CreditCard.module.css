@@ -1,0 +1,9 @@
+.AddCard_CreditCard {
+    width: 39%;
+}
+
+@media (max-width: 500px) {
+    .AddCard_CreditCard {
+        width: 100%;
+    }
+}
