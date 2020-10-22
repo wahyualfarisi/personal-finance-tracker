@@ -5,9 +5,11 @@ import BtnCircleColor from '../../components/UI/Buttons/BtnCircleColor/BtnCircle
 import Input from '../../components/UI/Input/Input';
 import Btn from '../../components/UI/Buttons/Btn/Btn';
 import { connect } from 'react-redux';
-
 import { initialState, reducer } from './store/reducer';
 import * as actions from './store/actions';
+
+import symbolDefs from './../../assets/symbol-defs.svg';
+import Icon from '../../components/UI/Icon/Icons';
 
 
 const AddCard = ( props ) => {
@@ -41,9 +43,8 @@ const AddCard = ( props ) => {
     return (
         <div className={classes.AddCard}>
             <h2 className="Text-center">Add your Card</h2>
-
             <div className={classes.AddCard_Container}>
-            
+
                 <div className={classes.AddCard_CreditCard}>
                     <CreditCard 
                         bank_name={state.add_form.bank_name.value}
@@ -61,15 +62,22 @@ const AddCard = ( props ) => {
                             selectedColor={state.credit_card.colorCard}
                             key={i} 
                             type={item} 
-                            clicked={() => dispatch( actions.selectThemeColor(item) ) }
+                            selected={ state.credit_card.colorCard === item }
+                            clicked={ () => dispatch( actions.selectThemeColor(item) ) }
                         />
                     ))}
                 </div>
 
                 <p>Select Text Color</p>
-                <div className="d-flex">
-                    <Btn clicked={() => dispatch( actions.selectTextColor('white'))} >White</Btn>
-                    <Btn clicked={() => dispatch( actions.selectTextColor('black'))} >Black</Btn>
+                <div className={classes.AddCard_Select_Color}>
+                    {state.text_collections.map((item,i) => (
+                        <Btn 
+                            key={i}
+                            selected={ state.credit_card.colorText === item }
+                            clicked={() => dispatch( actions.selectTextColor(item))}>
+                            {item}
+                        </Btn>
+                    ))}
                 </div>
 
                 <form onSubmit={submitHandler} className={[classes.AddCard_Form, 'mt-10'].join(' ')}>

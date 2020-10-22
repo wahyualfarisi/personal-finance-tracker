@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './BtnCircleColor.module.css';
 import classesColors from './../../Cards/CreditCard/CreditCard.module.css';
+import IconCheckMark from './../../../../assets/SVG/checkmark.svg';
+import Icon from '../../Icon/Icons';
 
 const BtnCircleColor = props => {
 
@@ -36,7 +38,15 @@ const BtnCircleColor = props => {
     }
 
     return (
-        <div className={[classes.BtnCircleColor, type].join(' ')} onClick={props.clicked}>  </div>
+        <div 
+            className={[classes.BtnCircleColor, type].join(' ')} 
+            onClick={props.clicked}>
+            { props.selected && (
+                <svg className={classes.BtnIcon}>
+                    <Icon name="checkmark" />
+                </svg>
+            ) }
+        </div>
     )
 }
 

@@ -58,6 +58,7 @@ export const initialState = {
         colorText: 'white'
     },
     card_collections: ['one','two','three','four','five','six'],
+    text_collections: ['white','black'],
     isLoading: false,
     error: null
 }
