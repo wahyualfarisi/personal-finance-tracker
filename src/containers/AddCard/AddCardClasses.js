@@ -150,7 +150,7 @@ class AddCard extends Component {
             formElementArr.push({
                 id: key,
                 config: this.state.add_form[key]
-            }) 
+            });
         }
 
         return (

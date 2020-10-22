@@ -2,7 +2,16 @@ import React from 'react';
 import classes from './FormDataCard.module.css';
 import Input from './../../UI/Input/Input';
 
-const FormDataCard = ( { state, formElementArr, submitHandler, inputHandler } ) => {
+const FormDataCard = ( { state, submitHandler, inputHandler } ) => {
+    let formElementArr = [];
+    
+    for(let key in state.add_form){
+        formElementArr.push({
+            id: key,
+            config: state.add_form[key]
+        }) 
+    }
+
     return (
         <form onSubmit={submitHandler} className={[classes.AddCard_Form, 'mt-10'].join(' ')}>
             {formElementArr.map(item => (

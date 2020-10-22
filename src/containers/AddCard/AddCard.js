@@ -14,15 +14,6 @@ const AddCard = ( props ) => {
 
     const [state, dispatch] = useReducer(reducer, initialState )
 
-    const formElementArr = [];
-
-    for(let key in state.add_form){
-        formElementArr.push({
-            id: key,
-            config: state.add_form[key]
-        }) 
-    }
-
     const submitHandler = (e) => {
         e.preventDefault();
         const form_data = {
@@ -35,8 +26,6 @@ const AddCard = ( props ) => {
                 color: state.credit_card.colorText
             }
         }
-
-
 
         console.log(form_data)
         
@@ -61,7 +50,6 @@ const AddCard = ( props ) => {
 
                 <FormDataCard 
                     state={state}
-                    formElementArr={formElementArr}
                     inputHandler={(value, inputName) => dispatch( actions.inputHandler(value, inputName) ) }
                     submitHandler={submitHandler}
                 />
