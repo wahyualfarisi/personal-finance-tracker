@@ -1,4 +1,5 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
 import classes from './AddCard.module.css';
 import { connect } from 'react-redux';
 import { initialState, reducer } from './store/reducer';
@@ -7,7 +8,10 @@ import CreditCard from './../../components/AddCard/CreditCard/CreditCard';
 import SelectCardColor from '../../components/AddCard/SelectCardColor/SelectCardColor';
 import SelectTextColor from '../../components/AddCard/SelectTextColor/SelectTextColor';
 import FormDataCard from '../../components/AddCard/FormDataCard/FormDataCard';
+import Spinner from './../../components/UI/Spinner/Spinner';
 
+
+//action from redux
 import * as actionsRedux from './../../store/actions/card';
 
 
@@ -36,29 +40,46 @@ const AddCard = ( props ) => {
         
     }
 
+    let addCard = (
+        <Fragment>
+            <CreditCard state={state} />
+
+            <SelectCardColor 
+                state={state} 
+                clicked={ (item) => dispatch( actions.selectThemeColor(item) ) }
+            />
+
+            <SelectTextColor 
+                state={state}
+                clicked={(item) => dispatch( actions.selectTextColor(item) ) }
+            />
+
+            <FormDataCard 
+                state={state}
+                inputHandler={(value, inputName) => dispatch( actions.inputHandler(value, inputName) ) }
+                submitHandler={submitHandler}
+            />
+        </Fragment>
+    )
+
+    if(props.isLoading){
+        addCard = <Spinner />
+    }
+
+    let redirectIfSuccessAdd = null;
+
+    if(props.response){
+        if( props.response.status ) {
+            redirectIfSuccessAdd = <Redirect to="/" />
+        }
+    }
+
     return (
         <div className={classes.AddCard}>
+            {redirectIfSuccessAdd}
             <h2 className="Text-center">Add your Card</h2>
             <div className={classes.AddCard_Container}>
-
-                <CreditCard state={state} />
-
-                <SelectCardColor 
-                    state={state} 
-                    clicked={ (item) => dispatch( actions.selectThemeColor(item) ) }
-                />
-
-                <SelectTextColor 
-                    state={state}
-                    clicked={(item) => dispatch( actions.selectTextColor(item) ) }
-                />
-
-                <FormDataCard 
-                    state={state}
-                    inputHandler={(value, inputName) => dispatch( actions.inputHandler(value, inputName) ) }
-                    submitHandler={submitHandler}
-                />
-
+                {addCard}
             </div>
         </div>
     )
@@ -69,7 +90,11 @@ const mapStateToProps = state => {
     return {
         isAuthenticated: state.auth.token !== null,
         userId: state.auth.userId,
-        token: state.auth.token
+        token: state.auth.token,
+        
+        isLoading: state.card.isLoading,
+        error: state.card.error,
+        response: state.card.response
     }
 }
 

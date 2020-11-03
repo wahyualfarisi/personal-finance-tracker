@@ -4,7 +4,8 @@ const initialState = {
     isLoading: false,
     collections: [],
     error: null,
-    response: null
+    response: null,
+    redirect: false
 }
 
 export default (state = initialState, action) => {

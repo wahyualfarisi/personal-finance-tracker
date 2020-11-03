@@ -9,7 +9,8 @@ export function* submitCardInit(action){
 
     try{
         const res = yield Axios.post(`/ft/card/add?token=${token}`, action.payload)
-        yield put( cardActions.addCardDone(res) );
+        
+        yield put( cardActions.addCardDone(res.data) );
     }catch(err) {
         yield put( cardActions.CardFailed(err) )
     }
