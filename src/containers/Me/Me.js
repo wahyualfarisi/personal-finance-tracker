@@ -7,10 +7,9 @@ import axios from './../../axios-instance';
 class Me extends Component {
 
     componentDidMount = () => {
-        const userId = localStorage.getItem('userId');
         const token  = localStorage.getItem('token');
         
-        axios.get(`/card_collections.json?auth=${token}&orderBy="userId"&equalTo="${userId}"`)
+        axios.get(`/ft/card?token=${token}`)
             .then(res => {
                 console.log(res)
             })

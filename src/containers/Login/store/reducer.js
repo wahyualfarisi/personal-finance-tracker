@@ -28,14 +28,13 @@ export const initialState = {
             value: '',
             validation: {
                 isRequired: true,
-                minLength: 6
+                minLength: 5
             },
             valid: false,
             touched: false
         }
     },
-    formIsValid: false,
-    isSignUp: false
+    formIsValid: false
 }
 
 export function reducer(state, action) {
@@ -84,7 +83,6 @@ export function reducer(state, action) {
       
 
         default: 
-
         return state;
     }
 }

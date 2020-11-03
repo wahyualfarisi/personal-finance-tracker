@@ -9,19 +9,12 @@ import { initialState, reducer } from './store/reducer';
 import * as actionCreators from './store/actions';
 import Alert from '../../components/UI/Alert/Alert';
 
+
 const Login = (props) => {
 
     const [ state, dispatch ] = useReducer(reducer, initialState)
 
-    let formUI = null, formData = [], textDirection = '', textHeading = '';
-
-    if( state.isSignUp ) {
-        textDirection = 'Login';
-        textHeading = 'Register';
-    }else{
-        textDirection = 'Register';
-        textHeading = 'Login';
-    }
+    let formUI = null, formData = [];
 
     for(let key in state.form){
         formData.push({
@@ -32,11 +25,8 @@ const Login = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
         const { email , password } = state.form;
-
-        props.onAuth( email.value, password.value, state.isSignUp);
-        
+        props.onAuth( email.value, password.value)
         
     }
 
@@ -77,7 +67,7 @@ const Login = (props) => {
                 className="Login__button_switch"
                 onClick={() => dispatch( actionCreators.switchAuth() ) }
             >
-                { textDirection }
+                Register
                 &rarr;
             </button>
             
@@ -93,7 +83,7 @@ const Login = (props) => {
             }}>
                 <Spinner />
             </div>
-        )
+        );
     }
 
 
@@ -102,13 +92,13 @@ const Login = (props) => {
             <div className="Login__card">
                 <div className="Login__content">
                     <h1 className="Login__text">
-                        {textHeading}
+                        Login
                     </h1>
                     <form className="Login__form" onSubmit={onSubmit}>
                         {formUI}
                     </form>
                 </div>
-             { props.error && <Alert type="Warning">{props.error.message}</Alert> }
+             { props.error && <Alert type="Warning">{props.error}</Alert> }
             </div>
         </div>
     )
@@ -125,7 +115,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (email, password, isSignUp) => dispatch( authActions.authInit(email, password, isSignUp)  )
+        onAuth: (email, password) => dispatch( authActions.authInit(email, password)  )
     }
 }
 

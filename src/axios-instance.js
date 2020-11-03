@@ -1,5 +1,7 @@
 import Axios from 'axios';
 
-export default Axios.create({
-    baseURL: 'https://finance-tracker-415f2.firebaseio.com/'
+const instance = Axios.create({
+    baseURL: process.env.NODE_ENV === 'development' ? 'http://localhost:8000/api' : 'https://resource-api.alfarisilab.com/api'
 });
+
+export default instance;
