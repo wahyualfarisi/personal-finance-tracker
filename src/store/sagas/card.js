@@ -5,9 +5,10 @@ import Axios from './../../axios-instance';
 export function* submitCardInit(action){
     yield put( cardActions.CardStart() )
     
+    const token = yield localStorage.getItem('token');
+
     try{
-        const res = yield Axios.post(`/card_collections.json?auth=${action.token}`, action.payload)
-        console.log(res);
+        const res = yield Axios.post(`/ft/card/add?token=${token}`, action.payload)
         yield put( cardActions.addCardDone(res) );
     }catch(err) {
         yield put( cardActions.CardFailed(err) )

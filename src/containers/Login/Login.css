@@ -1,7 +1,6 @@
 .Login {
-    width: 80%;
+    width: 90%;
     margin: auto;
-    height: 50vh;
     display: flex;
     align-items: center;
 }
@@ -12,6 +11,21 @@
     padding: 1rem;
     box-shadow: var(--shadow-light);
     border-radius: 5px;   
+}
+
+.Login__input_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.Login__content {
+    margin: 3rem 0;
+}
+
+.Login_loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Login__text {

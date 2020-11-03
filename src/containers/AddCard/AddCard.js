@@ -24,21 +24,15 @@ const AddCard = ( props ) => {
         }
 
         const form_data = {
-            userId: props.userId,
             bank_name: state.add_form.bank_name.value,
-            number_card: state.add_form.number_card.value,
-            name_card: state.add_form.your_name.value,
-            theme_card: {
-                background: state.credit_card.colorCard,
-                color: state.credit_card.colorText
-            },
-            transaction: {
-                inc: 0,
-                exp: 0
-            }
+            number: state.add_form.number_card.value,
+            author_name: state.add_form.your_name.value,
+            card_color: state.credit_card.colorCard,
+            text_color: state.credit_card.colorText,
+           
         }
 
-        props.onSubmitCard(form_data, props.token)
+        props.onSubmitCard(form_data)
         
     }
 
@@ -81,7 +75,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSubmitCard: ( form_data, token ) => dispatch( actionsRedux.addCardInit(form_data, token) ) 
+        onSubmitCard: ( form_data ) => dispatch( actionsRedux.addCardInit(form_data) ) 
     }
 }
 

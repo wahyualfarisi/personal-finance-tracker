@@ -1,5 +1,4 @@
 import * as types from './types';
-import Axios from './../../../axios-instance';
 
 export const selectThemeColor = ( theme ) => (
     {

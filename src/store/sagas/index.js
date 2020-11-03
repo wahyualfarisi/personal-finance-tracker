@@ -14,15 +14,20 @@ function* watchAuth(){
         takeEvery( actionTypes.LOGOUT_INIT, logoutInit ),
         takeEvery( actionTypes.AUTH_CHECK_STATE, authCheckStateSaga ),
         takeEvery( actionTypes.AUTH_CHECK_TIMEOUT, authCheckTimeOutSaga ),
-
-        takeEvery( actionTypes.CARD_INIT, submitCardInit )
     ]);
 };
+
+function* watchCard() {
+    yield all([
+        takeEvery( actionTypes.CARD_INIT, submitCardInit )
+    ]);
+}
 
 
 
 export default function* rootSaga(){
     yield all([
-        watchAuth()
+        watchAuth(),
+        watchCard()
     ])
 }

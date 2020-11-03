@@ -11,7 +11,7 @@ class LandingPage extends Component {
                 <div className="LandingPageClipPath"></div>
                 <div className="LandingPage__hero">
                     <div className="LandingPage__text">
-                        <h1 className="LandingPage__heading">Manage <span>Your</span> <span>Cards</span>  </h1>
+                        <h1 className="LandingPage__heading">Manage <span>Your</span> <span>Budget</span>  </h1>
                         <p className="LandingPage_paragraph">Tracking your expenses and income with spesific card</p>
                     </div>
                     <div className="LandingPage__Image">

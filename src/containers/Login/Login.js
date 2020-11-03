@@ -27,7 +27,6 @@ const Login = (props) => {
         e.preventDefault();
         const { email , password } = state.form;
         props.onAuth( email.value, password.value)
-        
     }
 
     let redirectIfAuthenticated = null;
@@ -37,7 +36,7 @@ const Login = (props) => {
     }
 
     formUI = (
-        <div style={{ display: 'flex', flexDirection: 'column' }}>  
+        <div>  
             {redirectIfAuthenticated}
             {formData.map(item => (
                 <Input 
@@ -61,26 +60,12 @@ const Login = (props) => {
                     className="Login__button"> SUBMIT 
                 </button>
             </div>
-
-            <button
-                type="button"
-                className="Login__button_switch"
-                onClick={() => dispatch( actionCreators.switchAuth() ) }
-            >
-                Register
-                &rarr;
-            </button>
-            
         </div>
     );
 
     if(props.loading){
         formUI = (
-            <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'    
-            }}>
+            <div className="Login_loading">
                 <Spinner />
             </div>
         );
