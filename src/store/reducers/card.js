@@ -2,10 +2,11 @@ import * as actionTypes from './../actions/actionTypes';
 
 const initialState = {
     isLoading: false,
-    collections: [],
     error: null,
     response: null,
-    redirect: false
+
+    collections: null,
+    last_transactions: null
 }
 
 export default (state = initialState, action) => {
@@ -30,6 +31,33 @@ export default (state = initialState, action) => {
             ...state,
             error: action.error   
         }
+
+
+        /* Load Card Start  */
+        case actionTypes.LOAD_CARD_START:
+        return {
+            ...state,
+            isLoading: true 
+        }
+
+        /* Load Card success */
+        case actionTypes.LOAD_CARD_SUCCESS:
+        return {
+            ...state,
+            isLoading: false,
+            error: null,
+            collections: action.payload.collection,
+            last_transactions: action.payload.last_transaction
+        }
+
+        case actionTypes.LOAD_CARD_FAILED:
+        return {
+            ...state,
+            isLoading: false,
+            error: action.error
+        }
+
+
 
         default:
         return state

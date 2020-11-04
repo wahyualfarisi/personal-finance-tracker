@@ -18,3 +18,9 @@ export const CARD_FAILED = 'CARD_FAILED';
 export const CARD_DONE = 'CARD_DONE';
 /* --------------------END ADD CARD----------------------------------- */
 
+/*  Load Card Collections */
+export const LOAD_CARD_INIT = 'LOAD_CARD_INIT';
+export const LOAD_CARD_START = 'LOAD_CARD_START';
+export const LOAD_CARD_SUCCESS = 'LOAD_CARD_SUCCESS';
+export const LOAD_CARD_FAILED = 'LOAD_CARD_FAILED';
+/*  End Load Card Collections */

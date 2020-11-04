@@ -3,7 +3,7 @@ import * as actionTypes from './../actions/actionTypes';
 
 import { authInit, logoutInit, authCheckStateSaga, authCheckTimeOutSaga } from './auth';
 import { 
-    submitCardInit
+    submitCardInit, fetchCollections
 } from './card';
 
 
@@ -19,7 +19,8 @@ function* watchAuth(){
 
 function* watchCard() {
     yield all([
-        takeEvery( actionTypes.CARD_INIT, submitCardInit )
+        takeEvery( actionTypes.CARD_INIT, submitCardInit ),
+        takeEvery( actionTypes.LOAD_CARD_INIT, fetchCollections )
     ]);
 }
 

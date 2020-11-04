@@ -2,6 +2,7 @@ import { put } from 'redux-saga/effects';
 import * as cardActions from './../actions/card';
 import Axios from './../../axios-instance';
 
+//Submit Card
 export function* submitCardInit(action){
     yield put( cardActions.CardStart() )
     
@@ -17,12 +18,17 @@ export function* submitCardInit(action){
 }
 
 export function* fetchCollections() {
-    yield put( cardActions.CardStart() );
+    yield put( cardActions.LoadCardStart() );
 
-    try{
+    const token = yield localStorage.getItem('token');
+
+    try{    
+        const res = yield Axios.get(`/ft/card?token=${token}`);
+        
+        yield put( cardActions.LoadCardSuccesss( res.data.results ))
 
     }catch(err){
-        yield put( cardActions.CardFailed(err) )
+        yield put( cardActions.LoadCardFailed(err) )
     }
 
 }
