@@ -33,6 +33,7 @@ class App extends Component {
       routes = (
         <Switch>
             <Route path="/" exact component={Me} />
+            <Route path="/card/:id" render={() => <h1>Hallo</h1>} />
             <Route path="/add" component={AddCard} />
             <Route path="/logout" component={Logout} />
             <Redirect to="/" />
