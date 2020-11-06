@@ -11,6 +11,8 @@ export const addCardInit = ( form_data ) => {
     }
 }
 
+//Clear Response to null
+export const ClearResponse = () => ({ type:actionTypes.CLEAR_RESPONSE });
 
 
 //Fetch Card Actions ----------------------------------------------------------------------------
@@ -18,3 +20,5 @@ export const LoadCardInit = () => ({ type: actionTypes.LOAD_CARD_INIT });
 export const LoadCardStart = () => ({ type: actionTypes.LOAD_CARD_START });
 export const LoadCardSuccesss = (res) => ({ type: actionTypes.LOAD_CARD_SUCCESS, payload: res });
 export const LoadCardFailed = (error) => ({ type: actionTypes.LOAD_CARD_FAILED, error });
+
+//End Fetch Card Actions ----------------------------------------------------------------------------

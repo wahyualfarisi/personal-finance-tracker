@@ -70,6 +70,7 @@ const AddCard = ( props ) => {
 
     if(props.response){
         if( props.response.status ) {
+            props.onClearResponse();
             redirectIfSuccessAdd = <Redirect to="/" />
         }
     }
@@ -100,7 +101,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSubmitCard: ( form_data ) => dispatch( actionsRedux.addCardInit(form_data) ) 
+        onSubmitCard: ( form_data ) => dispatch( actionsRedux.addCardInit(form_data) ),
+        onClearResponse: () => dispatch( actionsRedux.ClearResponse() )
     }
 }
 

@@ -57,6 +57,13 @@ export default (state = initialState, action) => {
             error: action.error
         }
 
+        /* Clear response to null */
+        case actionTypes.CLEAR_RESPONSE:
+        return {
+            ...state,
+            response: null
+        }
+
 
 
         default:

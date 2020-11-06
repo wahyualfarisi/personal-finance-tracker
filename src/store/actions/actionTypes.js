@@ -18,6 +18,8 @@ export const CARD_FAILED = 'CARD_FAILED';
 export const CARD_DONE = 'CARD_DONE';
 /* --------------------END ADD CARD----------------------------------- */
 
+export const CLEAR_RESPONSE = 'CLEAR_RESPONSE';
+
 /*  Load Card Collections */
 export const LOAD_CARD_INIT = 'LOAD_CARD_INIT';
 export const LOAD_CARD_START = 'LOAD_CARD_START';
