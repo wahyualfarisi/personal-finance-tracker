@@ -11,6 +11,7 @@ import Me from './containers/Me/Me';
 import LandingPage from './containers/LandingPage/LandingPage';
 
 import * as authActions from './store/actions/auth';
+import Transaction from './containers/Transaction/Transaction';
 
 class App extends Component {
 
@@ -24,7 +25,7 @@ class App extends Component {
           <Route path="/" exact component={LandingPage} />
           <Route path="/add" component={AddCard} />
           <Route path="/login" component={Login} />
-          <Redirect to="/" />
+          
       </Switch>
     );
   
@@ -33,7 +34,7 @@ class App extends Component {
       routes = (
         <Switch>
             <Route path="/" exact component={Me} />
-            <Route path="/card/:id" render={() => <h1>Hallo</h1>} />
+            <Route path="/card/:id" component={Transaction} />
             <Route path="/add" component={AddCard} />
             <Route path="/logout" component={Logout} />
             <Redirect to="/" />

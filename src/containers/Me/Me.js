@@ -38,7 +38,7 @@ const Me = ({ onLoadInit, collections, last_transactions, loading }) => {
 const mapStateToProps = state =>  {
     return {
         collections: state.card.collections,
-        last_transactions: state.card.last_transaction,
+        last_transactions: state.card.last_transactions,
         loading: state.card.isLoading
     }
 }
