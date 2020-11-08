@@ -1,28 +1,58 @@
 import React from 'react';
 import './TransactionDetail.css';
 import DetailList from './DetailList/DetailList';
+import EmptyCardImg from './../../../assets/images/empty_cart.svg';
+import Icon from './../../UI/Icon/Icons';
 
 const TransactionDetail = (props) => {
 
+    let list = (
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '400px'
+        }}>
+            <img src={EmptyCardImg} alt="" style={{ width: '200px' }} />
+            <h1>Transactions List is Empty</h1>
+            <p>Please add some transactions</p>
+        </div>
+    )
+
     if(props.transactions && !props.isLoading){
-        console.log(props)
+
+        if(props.transactions.length > 0) {
+            list = <DetailList />
+        }
+
     }
 
 
     return (
         <div className="Transaction_Detail">
             <div className="Transaction_Detail-form" >
-                <select>
-                    <option>Income</option>
-                    <option>Expense</option>
+
+                <select name="type" onChange={(e) => props.change(e.target.value, 'type') }>
+                    <option value="inc">Income</option>
+                    <option value="exp">Expense</option>
                 </select>
-                <input type="date" />
-                <input type="text" placeholder="amount" />
-                <input type="text" placeholder="Description" />
-                <button type="submit">ADD</button>
+                <input type="date" value={props.date} onChange={(e) => props.change(e.target.value, 'date')} />
+                <input type="text" placeholder="amount" value={props.amount} onChange={(e) => props.change(e.target.value, 'amount')} />
+                <input type="text" placeholder="Description" value={props.description} onChange={(e) => props.change(e.target.value, 'description')} />
+                
+                
+               
+                <button type="submit" disabled={!props.formIsValid}>
+                    {props.isLoading ? (
+                    <svg className="LoadingIcon">
+                        <Icon name="spinner" />
+                    </svg>
+                    ) : 'ADD'}
+                </button>
             </div>
 
-            <DetailList />
+            {list}
             
         </div>
     )

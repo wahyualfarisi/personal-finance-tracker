@@ -1,0 +1,1 @@
+export const INPUT_HANDLER = 'INPUT_HANDLER';

@@ -37,4 +37,34 @@
     background-color: var(--color-primary-light);
     color: #fff;
 }
+
+.Transaction_Detail-form button:disabled {
+    color: #ccc;
+    background: #ddd;
+    cursor: not-allowed;
+}
+
+.Transaction_Detail-form button:not(:disabled) {
+    animation: enable 0.3s linear;
+    background-color: var(--color-primary-dark);
+}
+
+.LoadingIcon {
+    height: 40px;
+    width: 2rem;
+    fill: black;
+}
+
+@keyframes enable {
+    0% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 /* End Detail Form */
