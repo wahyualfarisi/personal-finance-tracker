@@ -2,7 +2,13 @@ import React from 'react';
 import './TransactionDetail.css';
 import DetailList from './DetailList/DetailList';
 
-const TransactionDetail = () => {
+const TransactionDetail = (props) => {
+
+    if(props.transactions && !props.isLoading){
+        console.log(props)
+    }
+
+
     return (
         <div className="Transaction_Detail">
             <div className="Transaction_Detail-form" >

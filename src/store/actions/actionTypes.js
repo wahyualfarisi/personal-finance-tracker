@@ -26,3 +26,14 @@ export const LOAD_CARD_START = 'LOAD_CARD_START';
 export const LOAD_CARD_SUCCESS = 'LOAD_CARD_SUCCESS';
 export const LOAD_CARD_FAILED = 'LOAD_CARD_FAILED';
 /*  End Load Card Collections */
+
+
+
+
+/* --------------------TRANSACTIONS----------------------------------- */
+
+export const TRANSACTION_START = 'TRANSACTION_START';
+export const TRANSACTION_FAILED = 'TRANSACTION_FAILED';
+
+export const TRANSACTION_LOAD_INIT = 'TRANSACTION_INIT';
+export const TRANSACTION_LOAD_SUCCESS = 'TRANSACTION_LOAD_SUCCESS';

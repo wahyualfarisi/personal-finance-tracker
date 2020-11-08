@@ -5,6 +5,7 @@ import { authInit, logoutInit, authCheckStateSaga, authCheckTimeOutSaga } from '
 import { 
     submitCardInit, fetchCollections
 } from './card';
+import { fetchTransactions } from './transactions'
 
 
 //Watching auth
@@ -24,11 +25,18 @@ function* watchCard() {
     ]);
 }
 
+function* watchTransaction(){
+    yield all([
+        takeEvery(actionTypes.TRANSACTION_LOAD_INIT,  fetchTransactions  )
+    ])
+}
+
 
 
 export default function* rootSaga(){
     yield all([
         watchAuth(),
-        watchCard()
+        watchCard(),
+        watchTransaction()
     ])
 }
