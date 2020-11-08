@@ -1,0 +1,40 @@
+
+.Transaction_Detail {
+    /* background-color: green; */
+    flex: 1;
+}
+/* Transaction Container */
+
+
+/* Detail Form */
+.Transaction_Detail-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 1px 1px 7px rgba(0,0,0,.3);
+    border-radius: 10px;
+}
+
+.Transaction_Detail-form select, 
+.Transaction_Detail-form input {
+    outline: none;
+    border: none;
+    margin: 1rem;
+}
+
+.Transaction_Detail-form button {
+    align-self: stretch;
+    border: none;
+    border-radius: inherit;
+    width: 20%;
+    cursor: pointer;
+}
+.Transaction_Detail-form button:focus {
+    outline: none;
+    font-weight: 900;
+}
+.Transaction_Detail-form button:hover {
+    background-color: var(--color-primary-light);
+    color: #fff;
+}
+/* End Detail Form */

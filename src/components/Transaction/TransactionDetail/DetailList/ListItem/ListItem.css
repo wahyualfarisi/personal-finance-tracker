@@ -1,0 +1,40 @@
+
+.Transaction_Detail-item {
+    padding: .7rem 1rem;
+    background-color: #f6f6f6;
+}
+
+.Transaction_Detail-item:not(:last-child){
+    margin-bottom: .3rem;
+}
+
+.Transaction_Detail-item_heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Transaction_Detail-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Transaction_Detail-item_value p {
+    font-size: 1rem;
+    font-weight: 300;
+   
+}
+.Transaction_Detail-item_action {
+    display: flex;
+}
+.Transaction_Detail-item_action button {
+    margin: 0 .5rem;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+.Transaction_Detail-item_action button:focus {
+    outline: none;
+}
+
