@@ -1,19 +1,19 @@
 import React from 'react';
 import './ListItem.css';
 
-const ListItem = () => {
-    
+const ListItem = (props) => {
+  
     return (
         <li className="Transaction_Detail-item">
             <div className="Transaction_Detail-item_heading">
-                <h6>Income</h6>
-                <p>2020-09-09 10:50:00</p>
+                <h6>{props.type}</h6>
+                <p>{props.created_at}</p>
             </div>
 
             <div className="Transaction_Detail-body">
                 <div className="Transaction_Detail-item_value">
-                    <p>Rent Car</p>
-                    <p>120.000</p>
+                    <p>{props.description}</p>
+                    <p>{props.amount}</p>
                 </div>
                 <div className="Transaction_Detail-item_action">
                     <button>Edit</button>

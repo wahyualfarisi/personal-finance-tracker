@@ -10,6 +10,7 @@ import * as localAction from './store/actions';
 
 const Transaction = ( props) => {
     
+
     useEffect( () => {
         let id = props.match.params.id;
         props.onLoadTransaction(id)
@@ -18,6 +19,22 @@ const Transaction = ( props) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const { type, date, amount, description } = state.form;
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        let id = props.match.params.id;
+
+        const form_data = {
+            card_id: id,
+            description: description.value,
+            type: type.value,
+            date: date.value,
+            amount: amount.value 
+        }
+
+        props.onSubmitTransaction( form_data );
+    }
 
     return (
         <div className="TransactionContainer">
@@ -37,6 +54,7 @@ const Transaction = ( props) => {
 
                 formIsValid={state.formIsValid}
                 change={(value, name) => dispatch( localAction.inputHandler(value, name) ) }
+                submit={onSubmit}
             />
 
         </div>
@@ -52,7 +70,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    onLoadTransaction: (card_id) => dispatch( transactionAction.transactionLoadInit(card_id) ) 
+    onLoadTransaction: (card_id) => dispatch( transactionAction.transactionLoadInit(card_id) ) ,
+    onSubmitTransaction: (data) => dispatch( transactionAction.transactionAddInit(data) ) 
 })
 
 

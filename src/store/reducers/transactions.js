@@ -6,7 +6,10 @@ const initialState = {
     response: null,
 
     credit_card: null,
-    transactions: null
+    
+    add_start_loading: false,
+    transactions: null,
+
 }
 
 export default (state = initialState, action) => {
@@ -47,6 +50,30 @@ export default (state = initialState, action) => {
                     number: number
                 }
             }
+
+
+        case actionTypes.TRANSACTION_ADD_START:
+            return {
+                ...state,
+                add_start_loading: true,
+                error: null
+            }
+
+        case actionTypes.TRANSACTION_ADD_SUCCESS: 
+            return {
+                ...state,
+                add_start_loading: false,
+                error: null,
+                transactions: [...state.transactions, action.payload],
+            }
+
+        case actionTypes.TRANSACTION_ADD_FAILED:
+            return {
+                ...state,
+                add_start_loading: false,
+                error: action.error
+            }
+
 
         default:
             return state;

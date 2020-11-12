@@ -5,6 +5,7 @@ import EmptyCardImg from './../../../assets/images/empty_cart.svg';
 import Icon from './../../UI/Icon/Icons';
 
 const TransactionDetail = (props) => {
+    console.log(props)
 
     let list = (
         <div style={{
@@ -23,7 +24,8 @@ const TransactionDetail = (props) => {
     if(props.transactions && !props.isLoading){
 
         if(props.transactions.length > 0) {
-            list = <DetailList />
+            
+            list = props.transactions.map( (item, i) => <DetailList key={i} item={item} /> )
         }
 
     }
@@ -31,26 +33,27 @@ const TransactionDetail = (props) => {
 
     return (
         <div className="Transaction_Detail">
-            <div className="Transaction_Detail-form" >
+            <form onSubmit={props.submit} className="Transaction_Detail-form" >
 
-                <select name="type" onChange={(e) => props.change(e.target.value, 'type') }>
-                    <option value="inc">Income</option>
-                    <option value="exp">Expense</option>
-                </select>
-                <input type="date" value={props.date} onChange={(e) => props.change(e.target.value, 'date')} />
-                <input type="text" placeholder="amount" value={props.amount} onChange={(e) => props.change(e.target.value, 'amount')} />
-                <input type="text" placeholder="Description" value={props.description} onChange={(e) => props.change(e.target.value, 'description')} />
-                
-                
-               
-                <button type="submit" disabled={!props.formIsValid}>
-                    {props.isLoading ? (
-                    <svg className="LoadingIcon">
-                        <Icon name="spinner" />
-                    </svg>
-                    ) : 'ADD'}
-                </button>
-            </div>
+            <select name="type" onChange={(e) => props.change(e.target.value, 'type') }>
+                <option value="inc">Income</option>
+                <option value="exp">Expense</option>
+            </select>
+            <input type="date" value={props.date} onChange={(e) => props.change(e.target.value, 'date')} />
+            <input type="text" placeholder="amount" value={props.amount} onChange={(e) => props.change(e.target.value, 'amount')} />
+            <input type="text" placeholder="Description" value={props.description} onChange={(e) => props.change(e.target.value, 'description')} />
+            
+            
+        
+            <button type="submit" disabled={!props.formIsValid}>
+                {props.isLoading ? (
+                <svg className="LoadingIcon">
+                    <Icon name="spinner" />
+                </svg>
+                ) : 'ADD'}
+            </button> 
+
+            </form>
 
             {list}
             

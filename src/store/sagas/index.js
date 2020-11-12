@@ -1,11 +1,13 @@
-import { takeEvery, all } from 'redux-saga/effects';
+import { takeEvery, all, takeLatest } from 'redux-saga/effects';
 import * as actionTypes from './../actions/actionTypes';
 
 import { authInit, logoutInit, authCheckStateSaga, authCheckTimeOutSaga } from './auth';
 import { 
-    submitCardInit, fetchCollections
+    submitCardInit, fetchCollections, 
 } from './card';
-import { fetchTransactions } from './transactions'
+
+
+import { fetchTransactions, addTransaction } from './transactions'
 
 
 //Watching auth
@@ -27,7 +29,8 @@ function* watchCard() {
 
 function* watchTransaction(){
     yield all([
-        takeEvery(actionTypes.TRANSACTION_LOAD_INIT,  fetchTransactions  )
+        takeEvery(actionTypes.TRANSACTION_LOAD_INIT,  fetchTransactions  ),
+        takeLatest(actionTypes.TRANSACTION_ADD_INIT, addTransaction )
     ])
 }
 
