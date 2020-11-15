@@ -2,6 +2,7 @@ import React from 'react';
 import CreditCard from './../../UI/Cards/CreditCard/CreditCard';
 import './TransactionInfo.css';
 import Spinner from './../../UI/Spinner/Spinner';
+import { formatRupiah } from './../../../utility/Utility';
 
 
 const TransactionInfo = (props) => {
@@ -49,21 +50,21 @@ const TransactionInfo = (props) => {
         total_income = (
             <div className="Transaction_Info-inc">
                 <h5>Income</h5>
-                <h4>{sum_income}</h4>
+                <h4>{formatRupiah(sum_income) }</h4>
             </div>
         );
 
         total_expense = (
             <div className="Transaction_Info-exp">
                 <h5>Expense</h5>
-                <h4>{sum_expense}</h4>
+                <h4>{formatRupiah(sum_expense)}</h4>
             </div>
         )
 
         total_balance = (
             <div className="Transaction_Info-total_balance">
                 <h2>Available Balance</h2>
-                <h1>Rp. {balance}</h1>
+                <h1>Rp. { formatRupiah(balance) }</h1>
             </div>
         )
 

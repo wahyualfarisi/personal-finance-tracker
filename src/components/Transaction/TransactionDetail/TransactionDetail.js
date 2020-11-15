@@ -36,6 +36,7 @@ const TransactionDetail = (props) => {
             <form onSubmit={props.submit} className="Transaction_Detail-form" >
 
             <select name="type" onChange={(e) => props.change(e.target.value, 'type') }>
+                <option value="">--</option>
                 <option value="inc">Income</option>
                 <option value="exp">Expense</option>
             </select>

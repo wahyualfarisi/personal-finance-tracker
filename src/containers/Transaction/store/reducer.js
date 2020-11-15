@@ -77,7 +77,13 @@ export function reducer(state, action) {
             
             return {
                 ...state,
-                form: form,
+                form: {
+                    ...form,
+                    type: {
+                        ...form.type,
+                        value: 'inc'
+                    }
+                },
                 formIsValid: false
 
             }

@@ -1,5 +1,6 @@
 import React from 'react';
 import './ListItem.css';
+import { formatRupiah } from './../../../../../utility/Utility';
 
 const ListItem = (props) => {
     let type;
@@ -16,7 +17,7 @@ const ListItem = (props) => {
             <div className="Transaction_Detail-body">
                 <div className="Transaction_Detail-item_value">
                     <p>{props.description}</p>
-                    <p>{props.amount}</p>
+                    <p>{formatRupiah(props.amount)}</p>
                 </div>
                 <div className="Transaction_Detail-item_action">
                     <button>Edit</button>
