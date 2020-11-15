@@ -40,7 +40,7 @@ const TransactionDetail = (props) => {
                 <option value="exp">Expense</option>
             </select>
             <input type="date" value={props.date} onChange={(e) => props.change(e.target.value, 'date')} />
-            <input type="text" placeholder="amount" value={props.amount} onChange={(e) => props.change(e.target.value, 'amount')} />
+            <input type="number" placeholder="amount" value={props.amount} onChange={(e) => props.change(e.target.value, 'amount')} />
             <input type="text" placeholder="Description" value={props.description} onChange={(e) => props.change(e.target.value, 'description')} />
             
             

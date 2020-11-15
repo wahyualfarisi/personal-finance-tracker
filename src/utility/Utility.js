@@ -1,5 +1,7 @@
 export const onCheckValidity = (value, validation) => {
     let isValid = true;
+    
+    
 
     if( validation.required ){
         isValid = value.trim() !== "" && isValid;
@@ -11,6 +13,10 @@ export const onCheckValidity = (value, validation) => {
 
     if( validation.maxLength ){
         isValid = value.length <= validation.maxLength && isValid;
+    }
+
+    if( validation.onlyNumber){
+        
     }
 
     return isValid;

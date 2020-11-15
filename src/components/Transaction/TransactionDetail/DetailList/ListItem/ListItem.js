@@ -2,11 +2,14 @@ import React from 'react';
 import './ListItem.css';
 
 const ListItem = (props) => {
-  
+    let type;
+
+    props.type === 'inc' ? type = 'Income' : type = 'Expense'
+
     return (
         <li className="Transaction_Detail-item">
             <div className="Transaction_Detail-item_heading">
-                <h6>{props.type}</h6>
+                <h6>{type}</h6>
                 <p>{props.created_at}</p>
             </div>
 

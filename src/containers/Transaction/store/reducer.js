@@ -21,7 +21,9 @@ export const initialState = {
         amount: {
             validation: {
                 required: true,
-                minLength: 3
+                minLength: 3,
+                maxLength: 10,
+                onlyNumber: true
             },
             value: '',
             valid: false
@@ -42,8 +44,7 @@ export const initialState = {
 export function reducer(state, action) {
     switch(action.type)
     {
-        case types.INPUT_HANDLER: {
-            
+        case types.INPUT_HANDLER: 
             const updatedForm = { ...state.form }
             const updatedInput = { ...updatedForm[action.name] }
             updatedInput.value = action.value;
@@ -64,7 +65,22 @@ export function reducer(state, action) {
                 formIsValid: formIsValid
                 
             }
-        }
+        
+        case types.CLEAR_INPUT_VALUE:
+
+            const form = { ...state.form };
+
+            for( let key in form ){
+                form[key].value = '';
+                form[key].valid = false
+            }
+            
+            return {
+                ...state,
+                form: form,
+                formIsValid: false
+
+            }
 
         default:
             return state;

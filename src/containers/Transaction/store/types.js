@@ -1,1 +1,2 @@
 export const INPUT_HANDLER = 'INPUT_HANDLER';
+export const CLEAR_INPUT_VALUE = 'CLEAR_INPUT_VALUE';

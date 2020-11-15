@@ -10,7 +10,6 @@ const NavigationItems = (props) => {
             {props.isAuthenticated ? (
                 <Fragment>
                     <NavigationItem link="/"> My Collections </NavigationItem>
-                    <NavigationItem link="/add"> Add New Card </NavigationItem>
                     <NavigationItem link="/logout"> Logout </NavigationItem>
                 </Fragment>
             ) : (

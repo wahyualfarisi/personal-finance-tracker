@@ -14,7 +14,7 @@ const Transaction = ( props) => {
     useEffect( () => {
         let id = props.match.params.id;
         props.onLoadTransaction(id)
-    }, [])
+    }, [ ])
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -34,6 +34,8 @@ const Transaction = ( props) => {
         }
 
         props.onSubmitTransaction( form_data );
+
+        dispatch( localAction.clearInputValue() )
     }
 
     return (
@@ -42,6 +44,7 @@ const Transaction = ( props) => {
             <TransactionInfo 
                 credit_card={props.credit_card} 
                 isLoading={props.loading} 
+                transactions={props.transaction}
             />
             
             <TransactionDetail 
